@@ -1,0 +1,67 @@
+
+
+.indexFlight {
+  background: url("https://pages.c-ctrip.com/flight_h5/swift/home/home_bg.png")
+    no-repeat;
+  background-size: 100% auto;
+}
+.flightCard {
+  padding: 0 0.7rem;
+}
+
+.flightHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+.flightToggle {
+  background-color: rgb(139, 152, 226);
+  border-radius: 1.8rem;
+  overflow: hidden;
+  display: flex;
+  width: 10rem;
+  text-align: center;
+  padding: 0 .2rem;
+}
+
+.flightLogo {
+  width: 2rem;
+  height: 2rem;
+  background-color: #dedede;
+  border-radius: 50%;
+}
+
+.toggleItem {
+  width: 5rem;
+  height: 2rem;
+  line-height: 2rem;
+  border: none;
+  background-color: transparent;
+  margin: 0.106667rem 0 0.106667rem 0;
+  color: #fff;
+}
+
+.toggleItemCurrent {
+  composes: toggleItem;
+  background-color: #fff;
+  color: #333;
+  border-radius: 6rem;
+  transition: .2s;
+}
+.userIcon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: #cdcdcd;
+}
+
+
+.testStyle {
+  width: 200px;
+  height: 200px;
+  background-color: #cdcdcd;
+  color: #fff;
+  @include box-center
+}
