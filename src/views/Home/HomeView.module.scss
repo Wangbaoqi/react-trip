@@ -1,9 +1,9 @@
 
 
 .indexFlight {
-  background: url("https://pages.c-ctrip.com/flight_h5/swift/home/home_bg.png")
-    no-repeat;
-  background-size: 100% auto;
+  // background: url("https://pages.c-ctrip.com/flight_h5/swift/home/home_bg.png")
+  //   no-repeat;
+  // background-size: 100% auto;
 }
 .flightCard {
   padding: 0 0.7rem;
@@ -17,7 +17,7 @@
 }
 
 .flightToggle {
-  background-color: rgb(139, 152, 226);
+  // background-color: rgb(139, 152, 226);
   border-radius: 1.8rem;
   overflow: hidden;
   display: flex;
@@ -57,11 +57,3 @@
   background-color: #cdcdcd;
 }
 
-
-.testStyle {
-  width: 200px;
-  height: 200px;
-  background-color: #cdcdcd;
-  color: #fff;
-  @include box-center
-}

@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 
 
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './Counter.module.scss';
+import './Counter.scss';
 
 
 
@@ -22,38 +22,38 @@ const Counter = () => {
 
   return (
     <div>
-      <div className={styles.row}>
+      <div className='row'>
         <button
-          className={styles.button}
+          className='button'
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
         >
           -
         </button>
-        <span className={styles.value}>{count}</span>
+        <span className='value'>{count}</span>
         <button
-          className={styles.button}
+          className='button'
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
         >
           +
         </button>
       </div>
-      <div className={styles.row}>
+      <div className='row'>
         <input
-          className={styles.textbox}
+          className='textbox'
           aria-label="Set increment amount"
           value={incrementAmount}
           onChange={(e) => setIncrementAmount(e.target.value)}
         />
         <button
-          className={styles.button}
+          className='button'
           onClick={() => dispatch(incrementByAmount(incrementValue))}
         >
           Add Amount
         </button>
         <button
-          className={styles.asyncButton}
+          className='asyncButton'
           onClick={() => dispatch(incrementAsync(incrementValue))}
         >
           Add Async
