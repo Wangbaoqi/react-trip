@@ -1,11 +1,14 @@
 
 
+$theme-dark: (
+
+  n-text-color: (
+    color: $color-text-white
+  ),
+
+  n-background-color: (
+    background-color: $background-color-dark
+  )
+)
 
 
-@media (prefers-color-scheme: dark) {
-
-  html {
-    color: #fff !important;
-    background-color: #333 !important;
-  }
-}

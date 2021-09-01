@@ -1,0 +1,14 @@
+
+
+@include b(search) {
+
+  width: 100%;
+  border-radius: 16px;
+  height: 32px;
+  border: 1Px solid $color-secondary;
+  @include box-center($justify: false, $align: center);
+
+  @include e(icon) {
+    width: 20px;
+  }
+}

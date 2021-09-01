@@ -1,3 +1,44 @@
 @import "./theme-default.scss";
 @import "./theme-dark.scss";
 
+
+$themes: (
+  default: $theme-default,
+  dark: $theme-dark,
+);
+
+
+@mixin themesEach {
+  @each $key, $value in $themes {
+    $value: $value !global;
+    [data-theme="#{$key}"] & {
+      @content;
+    }
+  }
+}
+
+
+@function getTheme($key, $color) {
+  @return map-get(map-get($value, $key), $color);
+}
+
+
+
+
+@mixin n-text-color($style) {
+  
+  @include themesEach {
+    #{$style}: getTheme('n-text-color', 'color')
+  }
+}
+
+
+
+@mixin n-background-color($style) {
+  
+  @include themesEach {
+    #{$style}: getTheme('n-background-color', 'background-color')
+  }
+}
+
+

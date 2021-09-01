@@ -4,20 +4,23 @@
 
 $color-primary: #FF7D13;
 $color-white: #ffffff;
-
+$color-secondary: #0086f6;
 
 
 // Color-text
 $color-text-primary: #333333;
 $color-text-secondary:#999999;
-$color-text-tertiary: #0086f6;
+$color-text-tertiary: $color-secondary;
 $color-text-quaternary: #FF7528;
 $color-text-fifth: #00bc9e;
+$color-text-white: $color-white;
 
 
 // BackGround 
 $background-color-primary: #f8f8f8;
 $background-color-secondary: #8b98e2;
+
+$background-color-dark: #18191a
 
 
 // $color-black: 

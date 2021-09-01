@@ -1,1 +1,27 @@
 
+
+// @media (prefers-color-scheme: dark) {
+//   html {
+//     background-color: $background-color-primary;
+//     color: $color-text-primary;
+//   }
+// }
+
+
+$theme-default: (
+
+  n-text-color: (
+    color: $color-text-primary
+  ),
+
+  n-background-color: (
+    background-color: $background-color-primary
+  )
+
+)
+
+
+// html[data-theme='default'] {
+//   color: $color-text-primary;
+//   background-color: $background-color-primary
+// }

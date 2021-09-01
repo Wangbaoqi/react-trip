@@ -3,7 +3,7 @@
 
 import './Layout.scss'
 
-import Home from '../../views/Home/HomeView';
+import Home from '../../views/home/HomeView';
 
 
 const Layout = () => {

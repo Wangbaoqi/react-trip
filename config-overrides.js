@@ -6,7 +6,8 @@ const {
   addBundleVisualizer,
   addWebpackAlias,
   adjustWorkbox,
-  adjustStyleLoaders
+  adjustStyleLoaders,
+  fixBabelImports
 } = require("customize-cra");
 
 const path = require('path')
@@ -15,6 +16,11 @@ module.exports = {
 
 
   webpack: override(
+    fixBabelImports('import', {
+      libraryName: 'react-vant',
+      libraryDirectory: 'es',
+      style: true
+    }),
     adjustStyleLoaders(rule => {
       if (rule.test.toString().includes("scss")) {
         rule.use.push({

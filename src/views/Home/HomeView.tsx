@@ -1,60 +1,24 @@
-import React, { Fragment, useState, useEffect, Suspense } from 'react'
+import React, { Fragment, useState, useEffect, Suspense } from "react";
 
+import "./HomeView.scss";
 
-import styled from './HomeView.module.scss'
+import SearchPane from "@/components/searchPane/SearchPane";
 
-
-
-
-
+import HomeNav from "@/components/homeNav/HomeNav";
 
 const Home = () => {
 
-
-  const [toggleType, setToggleType] = useState(0)
-
-
-  const handleToggle = (e) => {
-    console.log(e);
-    setToggleType(e.type)
-  }
-
-  const data = [
-    {
-      type: 0,
-      value: '单程'
-    },{
-      type: 1,
-      value: '往返'
-    }
-  ]
-
+  
+  
 
   return (
-    <Fragment >
-     
-          
-     <div className={styled.indexFlight}>
-          <section className={styled.flightCard}>
-            <div className={styled.flightHeader}>
-              <div className={styled.flightLogo}></div>
-              <div className={styled.flightToggle}>
-                {
-                  data.map((item, idx) => (
-                    <span key={idx} className={toggleType == item.type ? styled.toggleItemCurrent : styled.toggleItem} 
-                      onClick={() => handleToggle(item)}>{item.value}</span>
-                  ))
-                }
-              </div>
-              <div className={styled.userIcon}></div>
-            </div>
+    <div className="home">
+      {/* search */}
+      <SearchPane />
+      {/* home nav */}
+      <HomeNav />
+    </div>
+  );
+};
 
-            
-          </section>
-        </div>
-    </Fragment>
-    
-  )
-}
-
-export default Home
+export default Home;

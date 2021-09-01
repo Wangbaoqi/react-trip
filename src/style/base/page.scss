@@ -1,14 +1,13 @@
 
 html {
-  background-color: $background-color-primary;
-  color: $color-text-primary;
   height: 100%;
-
+  
 }
 
 body {
   height: 100%;
-
+  @include n-background-color('background');
+  @include n-text-color('color')
 }
 
 
