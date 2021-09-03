@@ -1,0 +1,78 @@
+
+
+
+// 首页 card 样式变量
+
+// components/homeNav.scss 引用
+
+// 雪碧图icon 图片
+$cardIconImgUrl: 'https://webresource.c-ctrip.com/NFES/html5/1630305759641/_next/serverStatic/img/nav.png';
+$subCardIconImgUrl: 'https://webresource.c-ctrip.com/NFES/html5/1630305759641/_next/serverStatic/img/subnav.png';
+
+// 背景雪碧图位置
+$cardIconList: (
+  jiuDian: -84px,
+  minSu: -336px,
+  teJia: 0px,
+  jiPiao: -168px,
+  jieSongJi: -56px,
+  zhuShou: -280px,
+  huoChe: -364px,
+  qiChe: -224px,
+  zuChe: -252px,
+  lveYou: -140px,
+  menPiao: -196px,
+  zhouBianYou: -392px,
+  gongLve: -28px,
+  meiShi: -112px,
+  gouWu: -308px,
+
+  xiangDao: -84px,
+  baoXian: 0,
+  weiLinDui:-420px,
+  yiRiYou: -504px,
+  dingZhiYou: -168px,
+
+  youLunYou: -532px,
+  waiBiDuiHuan: -392px,
+  qianZheng: -280px,
+  wifiDianHua: -448px,
+  xingLiJiSong: -588px,
+
+  naQuHua: -252px,
+  LiPingKa: -224px,
+  xinYongKa: -560px,
+  huiYuanQianDao: -112px,
+  chaoJiHuiYuan: -56px,
+
+  zaiXianShangCheng: -140px,
+  xcXiaoShiJi: -476px,
+  JingJiZhiYuan: -336px,
+  jiaMengHeZuo: -196px,
+  gongSiHuiWu: -28px,
+  qiYeShangLve: -308px,
+  tripCom: -364px
+);
+
+
+
+// Home card background
+
+$card-background-other-list: (
+  hotel: #fff5f1,
+  fly: #eff9ff,
+  train: #f2f5ff,
+  vacation: #ecfcf8,
+  gs: #fff9f2
+);
+
+$card-background-first-list: (
+  hotel: linear-gradient(180deg,#fa5956,#fb8650),
+  fly: linear-gradient(180deg,#3c83fa,#50b2fa),
+  train: linear-gradient(0deg,#66a4ff,#5e80ff),
+  vacation: linear-gradient(180deg,#2fc3b6,#52d9b3),
+  gs: linear-gradient(0deg,#ffa846,#ff8939 99%)
+);
+
+
+

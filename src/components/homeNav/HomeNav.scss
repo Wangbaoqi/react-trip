@@ -1,9 +1,112 @@
 
 
-.my-swipe .rv-swipe-item {
-  color: #fff;
-  font-size: 20px;
-  line-height: 150px;
-  text-align: center;
-  background-color: #39a9ed;
+@include b(homeNav) {
+  padding: 0px 16px 6px;
+  background-color: $background-color-white;
+  .swiper-pagination-bullet-active {
+    width: 12px !important;
+    background-color: $color-secondary !important;
+    border-radius: 2px;
+  } 
+  .swiper-pagination-bullet {
+    width: 4px;
+    height: 4px;
+    background-color: $background-color-tertiary;
+  }
+  .swiper-pagination-bullets {
+    bottom: 0;
+
+    
+  }
+}
+
+
+
+@include b(navCard) {
+  @include box-center($justify: false, $align: center);
+  font-size: 12px;
+  padding: 0 0 12px 0;
+  width: 100%;
+  will-change: transform;
+  @include e(col) {
+    margin-left: 1px;
+    flex: 1;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  @include e(item) {
+    @include box-center;
+    height: 58px;
+    width: 100%;
+    text-align: center;
+    & a {
+      @include box-center;
+      flex-direction: column;
+    }
+    &:first-child {
+      a {
+        color: $color-white;
+      }
+    }
+    @include m(icon) {
+      display: block;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 4px;
+      background-size: 28px auto;
+      background-repeat: no-repeat;
+      background-image: url($cardIconImgUrl);
+    }
+    // 遍历 cardIcon 位置
+    @each $iconName, $iconSize in $cardIconList {
+      @include m($iconName) {
+        background-position: 0 $iconSize;
+      }
+    }
+  }
+ 
+  // 遍历 cardItem first-item background
+  @each $key, $value in $card-background-first-list {
+    @include e($key) {
+      // background-color: #{$key};
+      &:first-child {
+        @if($key == hotel) {
+          border-top-left-radius: 8px;
+        }
+        @if($key == gs) {
+          border-top-right-radius: 8px;
+        }
+        background-image: $value
+      }
+    }
+  }
+  //遍历 cardItem other-item background
+  @each $key, $value in $card-background-other-list {
+    @include e($key) {
+      background-color: $value;
+    }
+  }
+}
+
+@include b(navCardRow) {
+  flex-direction: column;
+
+  @include e(row) {
+    width: 100%;
+    @include box-center($justify: flex-start);
+  }
+
+  @include e(item) {
+    width: 20%;
+    &:first-child {
+      a {
+        color: $color-text-primary;
+      }
+    }
+    @include m(icon) {
+      background-image: url($subCardIconImgUrl);
+    }
+  }
 }
