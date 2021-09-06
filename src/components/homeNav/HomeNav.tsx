@@ -66,8 +66,6 @@ const HomeNav = () => {
 
   return (
     <section className='homeNav'>
-      <div className=''></div>
-
       <Swipe 
         className="homeNav__swipe" 
         autoHeight={true}

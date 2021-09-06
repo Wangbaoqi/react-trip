@@ -9,7 +9,7 @@ body {
   @include n-background-color('background');
   @include n-text-color('color');
 
-  color: $color-text-primary
+  // color: $color-text-primary
 }
 
 

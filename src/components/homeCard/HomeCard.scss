@@ -1,0 +1,185 @@
+
+
+@include b(home-card) {
+
+  @include m(row) {
+    padding: 10px $homePaddingLeft;
+    @include box-center($justify: false, $align: false);
+    margin-left: -8px;
+  }
+
+ 
+
+  @include e(item) {
+    width: 50%;
+    flex: 1;
+    padding: 8px;
+    background: $background-color-white;
+    border-radius: 8px;
+    margin-left: 8px;
+    overflow: hidden;
+  }
+  @include e(header) {
+    @include box-center($justify: space-between, $align: center);
+    height: 20px;
+    margin-bottom: 6px;
+  }
+  @include e(img) {
+    width: 73px;
+    height: 20px;
+  }
+  @include e(title) {
+    height: 16px;
+    line-height: 16px;
+    border-radius: 2px;
+    font-size: 10px;
+    background: $background-color-quaternary;
+    color: $color-text-eighth;
+    padding: 1px 4px;
+    white-space: nowrap;
+  }
+  @include e(box) {
+    position: relative;
+    // height: 84px;
+    margin-bottom: 4px;
+    border-radius: 6px;
+  }
+
+  @include m(rank) {
+    background: $background-color-fifty;
+    color: $color-text-tenth;
+  }
+}
+
+@include b(home-card-swiper) {
+
+  .swiper-pagination-bullet-active {
+    width: 12px !important;
+    background-color: $color-white !important;
+    border-radius: 6px !important;
+  } 
+  .swiper-pagination-bullet {
+    width: 4px;
+    height: 4px;
+    background-color: $background-color-tertiary;
+  }
+  .swiper-pagination-bullets {
+    right: 4px;
+    top: -3px;
+    width: auto;
+    width: auto;
+    bottom: auto;
+    left: auto;
+  }
+    
+  @include e(item) {
+    position: relative;
+    height: 84px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  @include m(tag) {
+    @include position(absolute, top 0 left 0);
+    z-index: 9;
+    height: 14px;
+    line-height: 14px;
+    padding: 0 3px;
+    background: rgba(51,51,51,.8);
+    border-radius: 6px 0 6px 0;
+    font-size: 10px;
+    color: $color-text-white;
+  }
+  @include m(img) {
+    @include position(absolute, top 0 left 0);
+    width: 100%;
+    height: auto;
+  }
+  @include m(product) {
+    @include position(absolute, right 6px left 6px bottom 6px);
+    border-radius: 0 6px 0 6px;
+    font-size: 11px;
+    line-height: 12px;
+    font-weight: 700;
+    color: $color-text-white;
+  }
+
+  @include m(title) {
+    @include ellipsis($lines: 1, $substract: 0);
+    font-size: 11px;
+    color: $color-text-primary;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+    // overflow: hidden;
+  }
+
+  @include e(price) {
+    @include m(new) {
+      font-size: 16px;
+      font-weight: 700;
+      color: $color-text-seventh;
+      padding-right: 2px;
+    } 
+    @include m(origin) {
+      color: $color-text-sixth;
+      text-decoration: line-through;
+    }
+    @include m(label) {
+      background-image: $linearGradientFirst;
+      color: $color-text-white;
+      margin-left: 4px;
+      padding: 3px;
+    }
+  }
+  @include e(bottom) {
+    @include box-center($justify: false, $align: center);
+
+    margin-top: 4px;
+    height: 18px;
+    line-height: 18px;
+    overflow: hidden;
+    font-size: 10px;
+    
+  }
+
+}
+
+@include b(home-card-rank) {
+  @include box-center($justify: false, $align: center);
+
+
+  @include e(item) {
+    overflow: hidden;
+    &:first-child {
+      margin-right: 2px;
+    }
+    &:last-child {
+      margin-left: 2px;
+    }
+  }
+
+  @include e(top) {
+    position: relative;
+
+    @include m(tag) {
+      @include position(absolute, top 0 left 0);
+      color: $color-text-ninth;
+      background-image: $linearGradientSecond;
+      border-radius: 6px 0 6px 0;
+      font-size: 10px;
+      padding: 0 3px;
+    }
+
+    @include m(img) {
+      border-radius: 6px;
+    }
+  }
+  @include e(bottom) {
+    @include ellipsis($lines: 1);
+    font-size: 11px;
+    margin-top: 6px;
+  }
+
+
+  
+}

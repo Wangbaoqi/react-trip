@@ -7,12 +7,37 @@ const {
   addWebpackAlias,
   adjustWorkbox,
   adjustStyleLoaders,
-  fixBabelImports
+  fixBabelImports,
+  overrideDevServer
 } = require("customize-cra");
 
 const path = require('path')
 
+
+
+
+
+
+const devServerConfig = () => config => {
+
+  return {
+    ...config,
+    // proxy: {
+    //   '/api': {
+    //     target: 'https://www.fastmock.site/mock/8a9721af5e539448794802d10acdc165/trips',
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       '^/api': ''
+    //     }
+    //   }
+    // }
+  }
+}
+
+
+
 module.exports = {
+
 
 
   webpack: override(
@@ -38,5 +63,8 @@ module.exports = {
       '@views': path.join(__dirname, '/src/views'),
       '@style': path.join(__dirname, '/src/style'),
     }),
-  )
+  ),
+
+  devServer: overrideDevServer(devServerConfig()),
+
 }

@@ -5,6 +5,9 @@
 
 // components/homeNav.scss 引用
 
+
+$homePaddingLeft: 12px;
+
 // 雪碧图icon 图片
 $cardIconImgUrl: 'https://webresource.c-ctrip.com/NFES/html5/1630305759641/_next/serverStatic/img/nav.png';
 $subCardIconImgUrl: 'https://webresource.c-ctrip.com/NFES/html5/1630305759641/_next/serverStatic/img/subnav.png';
@@ -55,6 +58,8 @@ $cardIconList: (
 );
 
 
+$linearGradientFirst: linear-gradient(90deg,#fa5956,#fb8650);
+$linearGradientSecond: linear-gradient(270deg,#f8e1bd,#e2c089);
 
 // Home card background
 

@@ -12,7 +12,7 @@ import { store } from './app/store';
 
 import reportWebVitals from './reportWebVitals';
 
-
+import '@/mocks';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,12 +1,12 @@
 
 
 @include b(homeNav) {
-  padding: 0px 16px 6px;
+  padding: 0px $homePaddingLeft 6px;
   background-color: $background-color-white;
   .swiper-pagination-bullet-active {
     width: 12px !important;
     background-color: $color-secondary !important;
-    border-radius: 2px;
+    border-radius: 6px !important;
   } 
   .swiper-pagination-bullet {
     width: 4px;
@@ -15,8 +15,6 @@
   }
   .swiper-pagination-bullets {
     bottom: 0;
-
-    
   }
 }
 

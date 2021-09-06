@@ -2,7 +2,7 @@
 
 
 @include b(search-container) {
-  padding: 6px 16px;
+  padding: 6px $homePaddingLeft;
 }
 @include b(search) {
 
