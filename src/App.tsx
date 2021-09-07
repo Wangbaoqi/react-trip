@@ -7,7 +7,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import RouterView from '@/route/routerView'
 
 
-
+import Layout from './components/layout/Layout';
 
 const App = () => {
   
@@ -47,10 +47,9 @@ const App = () => {
   })
   
   return (
-    <div className='container'>
-
-        <RouterView />
-    </div>
+    <Layout className='container-scroll'>
+      <RouterView />
+    </Layout>
   );
 }
 

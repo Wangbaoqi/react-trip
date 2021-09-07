@@ -1,15 +1,19 @@
 
 
-
+import classNames from 'classnames';
 import './Layout.scss'
 
-import Home from '../../views/home/HomeView';
+const Layout = (props) => {
 
+  console.log(props);
+  
+  const layoutCls = classNames(props.className, {
+    'layout': true,
 
-const Layout = () => {
+  })
   return (
-    <div className=''>
-      <Home />
+    <div className={layoutCls}>
+      {props && props.children}
     </div>
   );
 }

@@ -1,31 +1,30 @@
 
 import React, { lazy } from 'react'
 
+import flightRoute from './flightRoute'
 
-import Home from '@/views/home/HomeView'
-import Login from '@/views/signIn/SigninView'
-import Register from '@/views/register/RegisterView'
 
-const routesConf = [
-  
+const defaultConf = [
   {
     path: '/register',
-    component: Register,
+    component: lazy(() => import('@/views/register/RegisterView')),
   },
   {
     path: '/login',
-    component: Login
+    component: lazy(() => import('@/views/signIn/SigninView'))
   },
   {
     path: '/home',
-    component: Home
+    component: lazy(() => import('@/views/home/HomeView'))
   },
   {
     path: '/',
-    component: Home
+    component: lazy(() => import('@/views/home/HomeView'))
   }
-  
-  
 ]
 
+const routesConf = [
+  ...flightRoute,
+  ...defaultConf
+]
 export default routesConf

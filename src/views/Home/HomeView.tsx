@@ -8,8 +8,11 @@ import HomeNav from "@/components/homeNav/HomeNav";
 
 import HomeCard from "@/components/homeCard/HomeCard";
 
+import AdBanner from "@/components/adBanner/AdBanner";
+
 import { getCardList } from '@/api/home'
 
+import { homeBanner } from '@/assets/imgConf'
 
 const Home = () => {
 
@@ -29,8 +32,10 @@ const Home = () => {
       <SearchPane />
       {/* home nav */}
       <HomeNav />
-
+      {/* home card */}
       <HomeCard cardList={cardList}/>
+      {/* home banner */}
+      <AdBanner url={homeBanner}/>
     </div>
   );
 };

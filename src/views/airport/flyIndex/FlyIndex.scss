@@ -6,6 +6,50 @@
   // background-size: 100% auto;
 
 }
+
+@include b(fly-index) {
+  background: url("https://pages.c-ctrip.com/flight_h5/swift/home/home_bg.png")
+    no-repeat;
+  background-size: 100% auto;
+  min-height: 800px;
+  @include e(flight) {
+    padding: 12px $homePaddingLeft;
+
+  }
+
+  @include e(header) {
+    @include box-center($justify: space-between, $align: center);
+  }
+
+  @include e(logo) {
+    width: 30px;
+    height: auto;
+  }
+
+  @include e(toggle) {
+    background-color: $background-color-secondary;
+    border-radius: 1.8rem;
+    overflow: hidden;
+    display: flex;
+    width: 10rem;
+    text-align: center;
+    padding: 2px;
+  }
+  @include e(toggle-item) {
+    width: 5rem;
+    height: 2rem;
+    line-height: 2rem;
+    border: none;
+    background-color: transparent;
+    color: $background-color-white;
+    @include m(active) {
+      background-color: $background-color-white;
+      color: $color-text-primary;
+      border-radius: 6rem;
+      transition: .2s;
+    }
+  }
+}
 .flightCard {
   padding: 0 0.7rem;
 }

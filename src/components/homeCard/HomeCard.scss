@@ -92,6 +92,8 @@
   }
   @include m(img) {
     @include position(absolute, top 0 left 0);
+    top: 50%;
+    transform: translateY(-50%);
     width: 100%;
     height: auto;
   }
@@ -150,6 +152,7 @@
 
   @include e(item) {
     overflow: hidden;
+    flex: 1;
     &:first-child {
       margin-right: 2px;
     }
@@ -160,7 +163,8 @@
 
   @include e(top) {
     position: relative;
-
+    height: 84px;
+    overflow: hidden;
     @include m(tag) {
       @include position(absolute, top 0 left 0);
       color: $color-text-ninth;
@@ -171,6 +175,11 @@
     }
 
     @include m(img) {
+      @include position(absolute, top 0 left 0);
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 84px;
       border-radius: 6px;
     }
   }

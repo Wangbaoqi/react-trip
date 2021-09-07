@@ -16,12 +16,13 @@ import '@/mocks';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
-    
+    <React.Suspense fallback={'loading'}>
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
+    </React.Suspense>
   </React.StrictMode>,
   document.getElementById('root')
 );

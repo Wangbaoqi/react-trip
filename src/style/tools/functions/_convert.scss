@@ -36,9 +36,12 @@
 /// .example4 {
 ///   font-size: 37.44px;
 /// }
+
+
+
 @function convert($value, $currentUnit, $convertUnit, $baseSise: 16) {
     @if $convertUnit==px {
-        @if $converUnit==ems {
+        @if $convertUnit==ems {
             @return $value / $baseSise+0em;
         }
         @else if $convertUnit==percent {
@@ -73,3 +76,4 @@
         }
     }
 }
+

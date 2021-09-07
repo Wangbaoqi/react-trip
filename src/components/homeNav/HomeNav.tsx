@@ -1,15 +1,26 @@
-
-
+import { Link, LinkProps,  } from 'react-router-dom'
 
 import classNames from 'classnames';
-import './HomeNav.scss'
+import './HomeNav.scss';
 
 import { Swipe } from 'react-vant';
 
 import { cardConf, cardSubConf } from './index';
+import { RefAttributes } from 'react';
 
 
-const NavCardItem = ({item, row}) => {
+interface CardItem {
+  type: string,
+  subType?; string,
+  path?: any,
+  title: string
+}
+
+interface CardItemProps {
+  item: CardItem,
+  row?: string
+}
+const NavCardItem = ({item, row}:CardItemProps) => {
 
   const classNameItem = classNames({
     'navCard__item': true,
@@ -25,10 +36,10 @@ const NavCardItem = ({item, row}) => {
 
   return (
     <li className={classNameItem}>
-      <a className='nav' href="">
+      <Link to={item.path} className='nav'>
         <span className={classNameIcon}></span>
         <span className=''>{item.title}</span>
-      </a>
+      </Link>
     </li>
   )
 }

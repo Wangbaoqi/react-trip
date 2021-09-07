@@ -29,7 +29,7 @@ const HomeCardSwiper = ({itemList}) => {
           return (
             <Swipe.Item key={id}>
               <section className='home-card-swiper__item'>
-                <div className='home-card-swiper--tag'>{im.tag && im.tag.text}</div>
+                {im.tag && im.tag.text ? <div className='home-card-swiper--tag'>{im.tag.text}</div> : ''}
                 <img className='home-card-swiper--img' src={im.image}></img>
                 <div className='home-card-swiper--mask'></div>
                 <div className='home-card-swiper--product'>{im.title}</div>
