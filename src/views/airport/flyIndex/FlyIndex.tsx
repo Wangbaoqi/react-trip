@@ -5,17 +5,39 @@ import "./FlyIndex.scss";
 import classNames from "classnames";
 import { Icon } from "react-vant";
 
-import logo from "@/assets/logo1.png";
 
+import { FlyHeader, FlyCard } from '@/components/index'
 // import Menu from "@/components/menu/Meun";
 
+import { cacheGet, cacheSet } from '@/utils/cache';
+
+const defaultCityInfo = {
+  dep: {
+
+  }
+}
 const FlyIndex = () => {
   const [toggleType, setToggleType] = useState(0);
+
+  const [isExchange, setIsExchange] = useState(0);
+
+  const [cityInfo, setCityInfo] = useState(defaultCityInfo);
+
+  useEffect(() => {
+    cacheSet('fly-index_exchange', isExchange)
+  }, [])
 
   const handleToggle = (e) => {
     console.log(e);
     setToggleType(e.type);
   };
+ 
+  const handleChange = () => {
+    setIsExchange(1)
+    setTimeout(() => {
+      setIsExchange(0)
+    }, 500);
+  }
 
   const data = [
     {
@@ -29,34 +51,12 @@ const FlyIndex = () => {
   ];
 
   return (
-    <div className="fly-index">
-      <section className="fly-index__flight">
-        <div className="fly-index__header">
-          <img className="fly-index__logo" src={logo} alt="" />
-          <div className="fly-index__toggle">
-            {
-              data.map((im, idx) => {
-                const itemCls = classNames({
-                  'fly-index__toggle-item': true,
-                  'fly-index__toggle-item--active': im.type == toggleType
-                })
-                return (
-                  <span
-                    key={idx}
-                    className={itemCls}
-                    onClick={() => handleToggle(im)}
-                  >
-                    {im.value}
-                  </span>
-                )
-              })
-            }
-          </div>
-          <div className="fly-index__user">登录账号</div>
-        </div>
-        <div className="fly-index__card"></div>
+    <div className="fly">
+      <section className="fly__flight">
+        <FlyHeader data={data} toggleType={toggleType} handleToggle={handleToggle}/>
+        <FlyCard handleChange={handleChange} isExchange={isExchange}/>
 
-        <div className="fly-index__history"></div>
+        <div className="fly__history"></div>
       </section>
     </div>
   );

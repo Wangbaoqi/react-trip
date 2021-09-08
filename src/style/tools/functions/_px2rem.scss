@@ -1,3 +1,0 @@
-@function px2rem($value, $base-font-size: 16) { 
-	@return convert("rem", $value, 'px', $base-font-size);
-}

@@ -1,0 +1,7 @@
+
+
+@for $i from 9 through 30 {
+  .font-#{$i} { 
+    font-size: #{$i}px
+  }
+}

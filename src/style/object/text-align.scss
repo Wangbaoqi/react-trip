@@ -1,0 +1,6 @@
+
+@each $p in left, right, center {
+  .text-#{$p} {
+    text-align: #{$p};
+  }
+}
