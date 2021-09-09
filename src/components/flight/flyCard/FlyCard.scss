@@ -14,43 +14,29 @@
     // font-size: pxTorem(20px);
     font-weight: bold;
     @include box-center($justify: space-between);
-  
     @include m(trans-left) {
       transform: translateX(100%);
       transition: all 0.25s ease-in-out;
-  
       opacity: 0;
     }
-
     @include m(trans-right) {
       transform: translateX(-100%);
       transition: all 0.25s ease-in-out;
       opacity: 0;
-  
     }
   }
-
   @include e(city-item) {
     flex: 1;
   }
-
-  
-
-
-
   @include e(city-start) {
     text-align: left;
   }
-
   @include e(city-icon) {
     position: relative;
     width: 32px;
-    
-
     @include m(circle) {
       width: 20px;
-      height: 20px;
-      
+      height: 20px;      
     }
     @include m(fly) {
       width: 20px;
@@ -64,6 +50,14 @@
     }
     
 
+  }
+
+
+  @include e(date) {
+    @include box-center($justify: space-between)
+  }
+  @include e(date-item) {
+    // flex: 1;
   }
 
 }

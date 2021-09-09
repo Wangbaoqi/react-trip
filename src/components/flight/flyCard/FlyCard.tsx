@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import classNames from 'classnames';
 import './FlyCard.scss';
 import { flyIndexCircle, flyIndexFly } from '@/assets/imgConf';
-
+import { Divider } from 'react-vant';
 
 const FlyCard = ({
   handleChange,
@@ -40,7 +40,17 @@ const FlyCard = ({
         </div>
         <div className={endCls}>北京</div>
       </div>
-      <div className='fly-card-date'></div>
+      <div className='fly-card__date mt-20'>
+        <div className='fly-card__date-item'>
+          <label className='fly-card_date-label font-24 font-w-700'>09月09日</label>
+          <label className='fly-card_date-tip font-14'>今天</label>
+        </div>
+        <div className='fly-card__date-item'>
+          <label className='fly-card_date-label font-24 font-w-700'>09月09日</label>
+          <label className='fly-card_date-tip font-14'>今天</label>
+        </div>
+      </div>
+      <Divider className='divider-line mv-10'/>
       <div className='fly-card-cabin'></div>
       <div className='fly-card-search'></div>
       <div className='fly-card-tips'></div>

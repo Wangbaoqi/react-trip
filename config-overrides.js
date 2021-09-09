@@ -2,6 +2,7 @@
 const {
   override,
   addDecoratorsLegacy,
+  addPostcssPlugins,
   disableEsLint,
   addBundleVisualizer,
   addWebpackAlias,
@@ -38,14 +39,18 @@ const devServerConfig = () => config => {
 
 module.exports = {
 
-
-
   webpack: override(
     fixBabelImports('import', {
       libraryName: 'react-vant',
       libraryDirectory: 'es',
       style: true
     }),
+    addPostcssPlugins([require("postcss-pxtorem")({
+      rootValue: 16,
+      unitPrecision: 5,
+      propList: ['*'],
+      exclude: /node_modules/i
+    })]),
     adjustStyleLoaders(rule => {
       if (rule.test.toString().includes("scss")) {
         rule.use.push({

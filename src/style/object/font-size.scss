@@ -5,3 +5,15 @@
     font-size: #{$i}px
   }
 }
+
+
+
+// font-weight 
+// normal: 400
+// bold || bolder: 700
+// 
+@for $w from 1 through 1000 {
+  .font-w-#{$w} {
+    font-weight: #{$w};
+  }
+}
