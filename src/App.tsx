@@ -9,6 +9,21 @@ import RouterView from '@/route/routerView'
 
 import Layout from './components/layout/Layout';
 
+
+
+function setRem () {
+  // 当前页面宽度相对于 750 宽的缩放比例，可根据自己需要修改。
+  const scale = document.documentElement.clientWidth / 750
+  // 设置页面根节点字体大小
+  document.documentElement.style.fontSize = (32 * Math.min(scale, 2)) + 'px'
+}
+
+window.onresize = function () {
+  setRem()
+  console.log('size');
+  
+}
+
 const App = () => {
   
 

@@ -42,6 +42,12 @@ $direction: (l left, r right, t top, b bottom);
       }
     }
 
+    @else {
+      .pa-#{$i} {
+        padding: #{$i}px;
+      }
+    }
+
   }
 
 }

@@ -1,6 +1,7 @@
 
 
 @include b(fly-header) {
+  position: relative;
   height: 45px;
   @include box-center($justify: space-between, $align: center);
 
@@ -9,15 +10,21 @@
     width: 30px;
     height: auto;
   }
+
+  @include e(box) {
+    @include position(absolute, left 50%);
+    transform: translateX(-50%);
+  }
   
   @include e(toggle) {
+    position: relative;
     background-color: $background-color-secondary;
     border-radius: 1.8rem;
     overflow: hidden;
     display: flex;
     width: 10rem;
     text-align: center;
-    padding: 2px;
+    padding: 2Px;
   }
   @include e(toggle-item) {
     width: 5rem;
@@ -26,12 +33,23 @@
     border: none;
     background-color: transparent;
     color: $background-color-white;
+    
     @include m(active) {
+      position: absolute;
+      left: 2Px;
+      width: 5rem;
+      height: 2rem;
+      line-height: 2rem;
       background-color: $background-color-white;
       color: $color-text-primary;
       border-radius: 6rem;
       transition: .2s;
+      transform: translateX(0);
+    }
+    @include m(trans) {
+      transform: translateX(100%);
     }
   }
+  
 }
 
