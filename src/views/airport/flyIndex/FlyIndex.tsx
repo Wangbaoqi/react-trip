@@ -78,9 +78,6 @@ const FlyIndex = () => {
       <button onClick={() => dispatch(updateCabinInfo(2))}>changeCabin</button>
       <button onClick={handleCityInfo}>changeCity</button>
 
-
-      <Button type="primary" size="large">大号按钮</Button>
-
     </div>
   );
 };

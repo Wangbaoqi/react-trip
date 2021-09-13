@@ -3,7 +3,12 @@
 import { useState, useEffect } from "react";
 import { Popup, Tabs, Sidebar } from "react-vant";
 import { getAirportList } from "@/api/flyIndex";
-import { AirPortCityProp } from './PropTypes';
+import { AirPortCityProp, AirPortCityHot, AirPortCityIndex } from './PropTypes';
+
+
+
+
+
 
 const AirPortCity = ({
   visible,
@@ -12,21 +17,92 @@ const AirPortCity = ({
   closePop
 }: AirPortCityProp) => {
 
+  const [airportCity, setAirportCity] = useState({
+    hl:[],
+    pl: []
+  })
+
   useEffect(() => {
     getAirportList({}).then(res => {
       console.log(res, 'airport list');
-      
+      setAirportCity(res.data)
     })
   }, []);
 
+
+  const { hl = [], pl = [] } = airportCity
+
   return (
     <section>
-       <Popup className='airport-city' visible={visible} closeable style={{height: '100%'}} position='bottom' onClose={closePop}>
+       <Popup className='airport-city-box' visible={visible} title={title} closeable style={{height: '100%'}} position='bottom' onClose={closePop}>
         <section></section>
-        {/* <Tabs active="active">
-          <Tabs.TabPane title="标签 1">内容 1</Tabs.TabPane>
-          <Tabs.TabPane title="标签 2">内容 2</Tabs.TabPane>
-        </Tabs> */}
+        <Tabs active="a">
+          <Tabs.TabPane name='a' title="国内">
+            <section className='airport-city'>
+              <div className='airport-city__hot'>
+                <p>热门</p>
+                <ul className='airport-city__hot-list'>
+                  {
+                    hl.map((im: AirPortCityHot, idx) => {
+
+                      return (
+                        <li className='airport-city__hot-item' key={idx}>
+                          <div className=''>
+                            {im.name}
+                          </div>
+                        </li>
+                      )
+                    })
+                  }
+                </ul>
+              </div>
+              <div className='airport-city__letter'>
+                <p>字母索引</p>
+                <ul>
+                  {
+                    pl.map((im: AirPortCityIndex, idx) => {
+
+                      return (
+                        <li className='airport-city__hot-item' key={idx}>
+                          <div className=''>
+                            {im.p}
+                          </div>
+                        </li>
+                      )
+                    })
+                  }
+                </ul>
+              </div>
+              <div className='airport-city__index'>
+                { 
+                  pl.map((im: AirPortCityIndex, idx) => {
+
+                    return (
+                      <div className='airport-city__hot-item' key={idx}>
+                        <p className=''>
+                          {im.p}
+                        </p>
+                        <ul>
+                          {
+                            im.cl.map((item, idx) => (
+                              <li>
+                                <div>
+                                  {item.name}
+                                </div>
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </div>
+                    )
+                  })
+                  }
+                <p></p>
+              </div>
+            </section>
+          </Tabs.TabPane>
+          <Tabs.TabPane name='b' title="国际/港澳台">国际/港澳台</Tabs.TabPane>
+        </Tabs>
       </Popup>
     </section>
    

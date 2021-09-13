@@ -1,3 +1,4 @@
+import { type } from "os"
 
 
 interface AirPortCityProp {
@@ -8,6 +9,21 @@ interface AirPortCityProp {
 }
 
 
+type AirPortCityHot = {
+  code: string,
+  desc: string,
+  name: string
+  timezone: string
+}
+
+type AirPortCityIndex = {
+  p: string,
+  cl: Array<AirPortCityHot>,
+}
+
+
 export type {
-  AirPortCityProp
+  AirPortCityProp,
+  AirPortCityHot,
+  AirPortCityIndex
 }

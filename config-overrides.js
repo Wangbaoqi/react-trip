@@ -3,6 +3,7 @@ const {
   override,
   addDecoratorsLegacy,
   addPostcssPlugins,
+  addLessLoader,
   disableEsLint,
   addBundleVisualizer,
   addWebpackAlias,
@@ -40,20 +41,17 @@ const devServerConfig = () => config => {
 module.exports = {
 
   webpack: override(
-    // fixBabelImports('import', {
-    //   libraryName: 'react-vant',
-    //   libraryDirectory: 'es',
-    //   style: true
-    // }),
+   
     fixBabelImports('react-vant', {
       libraryDirectory: "es",
       style: true
     }),
+
     addPostcssPlugins([require("postcss-pxtorem")({
       rootValue: 16,
       unitPrecision: 5,
       propList: ['*'],
-      // exclude: /node_modules/i
+      exclude: /node_modules/i
     })]),
 
     adjustStyleLoaders(rule => {
@@ -68,10 +66,7 @@ module.exports = {
     }),
 
     addWebpackAlias({
-      ['@']: path.join(__dirname, '/src'),
-      '@components': path.join(__dirname, '/src/components'),
-      '@views': path.join(__dirname, '/src/views'),
-      '@style': path.join(__dirname, '/src/style'),
+      ['@']: path.join(__dirname, '/src')
     }),
   ),
 
