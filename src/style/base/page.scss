@@ -1,15 +1,15 @@
 
 html {
   height: 100%;
-  // font-size: calc(100vw / 750 * 100);
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
 }
 
 body {
+  margin: 0;
   height: 100%;
   @include n-background-color('background');
   @include n-text-color('color');
-
-  // color: $color-text-primary
 }
 
 
@@ -22,3 +22,5 @@ body {
 .divider-line {
   background-color: $border-color-primary;
 }
+
+

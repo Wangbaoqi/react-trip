@@ -14,6 +14,8 @@ import { getCardList } from '@/api/home'
 
 import { homeBanner } from '@/assets/imgConf'
 
+
+import { Button } from "react-vant";
 const Home = () => {
 
   const [cardList, setCardList] = useState([]);
@@ -36,6 +38,7 @@ const Home = () => {
       <HomeCard cardList={cardList}/>
       {/* home banner */}
       <AdBanner url={homeBanner}/>
+
     </div>
   );
 };

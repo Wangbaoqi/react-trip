@@ -3,6 +3,7 @@ export { default as FlyCard } from './flight/flyCard/FlyCard';
 
 
 export { default as CalenderPrice } from './ux/calender/CalenderPrice';
+export { default as AirPortCity } from './ux/airportCity/AirPortCity';
 
 
 

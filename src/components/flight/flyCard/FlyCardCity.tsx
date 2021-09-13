@@ -5,7 +5,8 @@ import { flyIndexCircle, flyIndexFly } from '@/assets/imgConf';
 
 const FlyCardCity = ({
   handleChange,
-  isExchange
+  isExchange,
+  handleCity
 }) => {
 
   // const
@@ -25,7 +26,7 @@ const FlyCardCity = ({
 
   return (
     <section className='fly-card__city'>
-      <div className={startCls}>上海</div>
+      <div className={startCls} onClick={() => handleCity('start')}>上海</div>
       <div className='fly-card__city-icon' onClick={handleChange}>
         <span className='fly-card__city-icon--circle'>
           <img className={iconCls} src={flyIndexCircle} alt="" />
@@ -34,7 +35,7 @@ const FlyCardCity = ({
           <img src={flyIndexFly} alt="" />
         </span>
       </div>
-      <div className={endCls}>北京</div>
+      <div className={endCls} onClick={() => handleCity('end')}>北京</div>
     </section>
   )
 }

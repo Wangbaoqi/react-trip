@@ -1,4 +1,4 @@
-import { Link, LinkProps,  } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import classNames from 'classnames';
 import './HomeNav.scss';
@@ -6,7 +6,6 @@ import './HomeNav.scss';
 import { Swipe } from 'react-vant';
 
 import { cardConf, cardSubConf } from './index';
-import { RefAttributes } from 'react';
 
 
 interface CardItem {

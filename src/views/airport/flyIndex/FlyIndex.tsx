@@ -3,7 +3,7 @@ import React, { Fragment, useState, useEffect, Suspense } from "react";
 import "./FlyIndex.scss";
 
 import classNames from "classnames";
-import { Icon } from "react-vant";
+import { Icon, Button } from "react-vant";
  
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FlyHeader, FlyCard, Counter } from '@/components/index'
 
 import { cacheGet, cacheSet } from '@/utils/cache';
+import { getAirportList } from '@/api/flyIndex'
 
 
 import { changeTripType, updateCityInfo, updateCabinInfo, updateDateInfo, getFlyState } from "./FlyIndexSlice";
@@ -23,7 +24,6 @@ const defaultCityInfo = {
 const FlyIndex = () => {
   const [toggleType, setToggleType] = useState(0);
 
-  const [isExchange, setIsExchange] = useState(0);
 
   const [cityInfo, setCityInfo] = useState(defaultCityInfo);
 
@@ -31,8 +31,10 @@ const FlyIndex = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    cacheSet('fly-index_exchange', isExchange)
-  }, [])
+
+  }, []);
+
+
 
   const handleToggle = (e) => {
     console.log(e);
@@ -51,12 +53,7 @@ const FlyIndex = () => {
     dispatch(updateCityInfo(newCity))
   }
  
-  const handleChange = () => {
-    setIsExchange(1)
-    setTimeout(() => {
-      setIsExchange(0)
-    }, 500);
-  }
+  
 
   const data = [
     {
@@ -73,13 +70,17 @@ const FlyIndex = () => {
     <div className="fly">
       <section className="fly__flight">
         <FlyHeader data={data} toggleType={toggleType} handleToggle={handleToggle}/>
-        <FlyCard handleChange={handleChange} isExchange={isExchange}/>
+        <FlyCard />
         <div className="fly__history"></div>
       </section>
 
 
       <button onClick={() => dispatch(updateCabinInfo(2))}>changeCabin</button>
       <button onClick={handleCityInfo}>changeCity</button>
+
+
+      <Button type="primary" size="large">大号按钮</Button>
+
     </div>
   );
 };
