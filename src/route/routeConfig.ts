@@ -1,7 +1,8 @@
 
 import React, { lazy } from 'react'
 
-import flightRoute from './flightRoute'
+import flightRoute from './flightRoute';
+import testRoute from './testRoute';
 
 
 const defaultConf = [
@@ -24,6 +25,7 @@ const defaultConf = [
 ]
 
 const routesConf = [
+  ...testRoute,
   ...flightRoute,
   ...defaultConf
 ]

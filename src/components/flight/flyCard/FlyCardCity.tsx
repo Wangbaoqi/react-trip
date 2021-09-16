@@ -2,6 +2,8 @@
 
 import classNames from 'classnames';
 import { flyIndexCircle, flyIndexFly } from '@/assets/imgConf';
+import { updateCityInfo, getFlyState } from '@/views/airport/flyIndex/FlyIndexSlice'
+import { useDispatch, useSelector } from 'react-redux';
 
 const FlyCardCity = ({
   handleChange,
@@ -9,7 +11,7 @@ const FlyCardCity = ({
   handleCity
 }) => {
 
-  // const
+  const flyState = useSelector(getFlyState);
 
 
   const startCls = classNames('fly-card__city-item', 'fly-card__city-start', 'font-24', 'text-left', {
@@ -24,9 +26,10 @@ const FlyCardCity = ({
     'fly-card__city-icon--trans': isExchange
   })
 
+
   return (
     <section className='fly-card__city'>
-      <div className={startCls} onClick={() => handleCity('start')}>上海</div>
+      <div className={startCls} onClick={() => handleCity(0)}>{flyState.dName}</div>
       <div className='fly-card__city-icon' onClick={handleChange}>
         <span className='fly-card__city-icon--circle'>
           <img className={iconCls} src={flyIndexCircle} alt="" />
@@ -35,7 +38,7 @@ const FlyCardCity = ({
           <img src={flyIndexFly} alt="" />
         </span>
       </div>
-      <div className={endCls} onClick={() => handleCity('end')}>北京</div>
+      <div className={endCls} onClick={() => handleCity(1)}>{flyState.aName}</div>
     </section>
   )
 }

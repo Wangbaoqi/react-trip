@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 import './FlyCard.scss';
 import { Divider } from 'react-vant';
+import { useDispatch, useSelector } from 'react-redux';
 import { 
   FlyCardCity, 
   FlyCardDate, 
@@ -11,9 +12,9 @@ import {
   FlyCardTips 
 } from './index';
 import { cacheGet, cacheSet } from '@/utils/cache';
-import { Popup, Tabs, Sidebar } from "react-vant";
+import { updateCityInfo, getFlyState } from '@/views/airport/flyIndex/FlyIndexSlice'
 
-import { AirPortCity } from '@/components';
+import { AirPortCity  } from '@/components';
 
 const FlyCard = ({
 }) => {
@@ -21,11 +22,13 @@ const FlyCard = ({
   // const
   const [cityShow, setCityShow] = useState(false);
   const [isExchange, setIsExchange] = useState(0);
-  const [cityProps, setCityProps] = useState({})
+  const [cityType, setCityType] = useState(0);
+
+  const flyState = useSelector(getFlyState);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     cacheSet('fly-index_exchange', isExchange);
-
   }, [])
 
   const handleExChange = () => {
@@ -36,28 +39,43 @@ const FlyCard = ({
     }, 500);
   }
 
-  const handleCheckCity = (e) => {
-    console.log(e, 'city');
-    
+  const handleCityShow = (type) => {
+    setCityType(type)
     setCityShow(true)
+  }
+
+  const handleCheckCity = (city) => {
+    console.log(city, cityType, 'city');
+    const { code, name} = city;
+    let cityInfo = {};
+    if(cityType) {
+      dispatch(updateCityInfo({
+        aName: name,
+        aCode: code
+      }))
+    } else {
+      dispatch(updateCityInfo({
+        dName: name,
+        dCode: code
+      }))
+    }
+    setCityShow(false)
+
   }
 
 
   return (
     <div className="fly-card mt-15 pa-20">
-      <FlyCardCity isExchange={isExchange} handleChange={handleExChange} handleCity={handleCheckCity}/>
+      <FlyCardCity isExchange={isExchange} handleChange={handleExChange} handleCity={handleCityShow}/>
       <FlyCardDate />
       <Divider className='divider-line mv-10'/>
       <FlyCardCabin />
       <FlyCardSearch />
       <FlyCardTips />
 
-      <AirPortCity visible={cityShow} closePop={() => { setCityShow(false) }} />
+      <AirPortCity visible={cityShow} onCheck={handleCheckCity} closePop={() => { setCityShow(false) }} />
 
-      {/* <Popup className='airport-city' visible={cityShow} closeable style={{height: '50%'}} position='bottom' onClose={() => { setCityShow(false) }}>
-        <section>ddd</section>
-        
-      </Popup> */}
+      
     </div>
   )
 }

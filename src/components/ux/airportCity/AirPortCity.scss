@@ -1,0 +1,107 @@
+
+
+@include b(airport-city-box) {
+  overflow: hidden;
+  
+  @include b(rv-tabs__wrap) {
+    border-bottom: 1px solid $border-color-primary;
+  }
+}
+
+
+
+@include b(airport-city-container) {
+  height: calc(100vh - 88px);
+  overflow-y: auto;
+}
+
+@include b(airport-city) {
+
+
+
+  @include e(title) {
+    background-color: $background-color-sixth;
+    padding: 5px 15px;
+    margin: 5px 0;
+  }
+
+  @include e(box) {
+
+
+  }
+  @include e(content) {
+    height: 36px;
+    margin-bottom: 10px;
+  }
+
+  @include e(item) {
+    @include box-center;
+    height: 36px;
+    width: 100%;
+    border: 1px solid $border-color-primary;
+    border-radius: 4px;
+
+    @include m(active) {
+      color: $color-text-tertiary;
+      border: 1px solid $color-text-tertiary;
+    }
+  }
+}
+
+@include b(airport-inCity) {
+
+
+  @include e(sideBar) {
+    width: 100%;
+    height: calc(100vh - 88px);
+    border-right: 1px solid $border-color-primary;
+
+    @include b(rv-sidebar-item) {
+      text-align: center;
+      padding: 15px 8px;
+      border-bottom: 1px solid $border-color-primary;
+      
+      @include m(select) {
+        &::before {
+          content: none;
+        }
+        color: $color-text-tertiary;
+      }
+    }
+
+  }
+
+  @include e(content) {
+    height: calc(100vh - 88px);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  @include e(item) {
+
+  }
+  @include e(item-container) {
+    
+  }
+
+  @include e(item-title) {
+    background-color: $background-color-sixth;
+    padding: 5px 15px;
+    margin: 0 1px;
+  }
+
+  @include e(item-box) {
+    padding: 5px 15px;
+    
+  }
+  @include e(item-block) {
+    @include box-center;
+    height: 36px;
+    width: 100%;
+    border: 1px solid $border-color-primary;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+}
+

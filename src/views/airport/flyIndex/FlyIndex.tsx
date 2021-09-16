@@ -11,8 +11,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FlyHeader, FlyCard, Counter } from '@/components/index'
 
 import { cacheGet, cacheSet } from '@/utils/cache';
-import { getAirportList } from '@/api/flyIndex'
-
+import { getAirportList, getInterAirportList } from '@/api/flyIndex'
+import { AirPortCityData } from '@/components/ux/airportCity/PropTypes'
 
 import { changeTripType, updateCityInfo, updateCabinInfo, updateDateInfo, getFlyState } from "./FlyIndexSlice";
 
@@ -31,7 +31,25 @@ const FlyIndex = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    getAirportList({}).then(res => {
+      console.log(res, 'airport list');
+      const cityCacheData: AirPortCityData = {
+        inland: {},
+        inter: {}
+      }
+      cityCacheData.inland = res.data;
 
+      // cacheSet('AIRPORT_LIST_CITY_CACHE', JSON.stringify(cityCacheData))
+
+      getInterAirportList({}).then(res => {
+        console.log(res, 'airport list');
+        // const cityCacheData = cacheGet('AIRPORT_LIST_CITY_CACHE')
+        cityCacheData.inter = res.data
+        cacheSet('AIRPORT_LIST_CITY_CACHE', JSON.stringify(cityCacheData))
+      })
+    })
+
+    
   }, []);
 
 

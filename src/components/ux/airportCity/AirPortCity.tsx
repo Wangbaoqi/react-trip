@@ -1,108 +1,75 @@
 
 // 
 import { useState, useEffect } from "react";
-import { Popup, Tabs, Sidebar } from "react-vant";
-import { getAirportList } from "@/api/flyIndex";
-import { AirPortCityProp, AirPortCityHot, AirPortCityIndex } from './PropTypes';
+import { Popup, Tabs, Sidebar, IndexBar, Cell } from "react-vant";
+import AirPortGn from "./AirportGn";
+import AirportGJ from "./AirportGJ";
+import { AirPortCityProp, AirPortCityHot, AirPortCityIndex, AirPortCityState, AirPortCityData } from './PropTypes';
+import { cacheGet } from '@/utils/cache';
 
 
-
+import './AirPortCity.scss'
 
 
 
 const AirPortCity = ({
   visible,
   onCheck,
-  title,
+  title='选择城市',
   closePop
 }: AirPortCityProp) => {
 
-  const [airportCity, setAirportCity] = useState({
-    hl:[],
-    pl: []
-  })
+  const [airportCity, setAirportCity] = useState<AirPortCityData>({} as AirPortCityData)
 
   useEffect(() => {
-    getAirportList({}).then(res => {
-      console.log(res, 'airport list');
-      setAirportCity(res.data)
-    })
+
+    const cityCacheData: string | null = cacheGet('AIRPORT_LIST_CITY_CACHE');
+
+    if(cityCacheData) {
+      const cityData = JSON.parse(cityCacheData)
+      setAirportCity(cityData)
+    }
+
   }, []);
 
+  const { inland = {}, inter = {} } = airportCity
+  const { hl = [], pl = []} = inland;
 
-  const { hl = [], pl = [] } = airportCity
+  const onCheckCity = (city) => {
+    hl.map(e => {
+      e.checked = false
+      if(e.name == city.name) {
+        e.checked = !e.checked
+      }
+    })
+    pl.map(({cl = []}) => {
+      cl.map(e => {
+        e.checked = false
+        if(e.name == city.name) {
+          e.checked = !e.checked
+        }
+      })
+    })
+   
+    setAirportCity({
+      ...airportCity,
+      ...inland
+    })
+    onCheck && onCheck(city)
+  }
 
   return (
     <section>
-       <Popup className='airport-city-box' visible={visible} title={title} closeable style={{height: '100%'}} position='bottom' onClose={closePop}>
-        <section></section>
-        <Tabs active="a">
+       <Popup className='airport-city-box' visible={visible} title={title} closeable style={{height: '100%'}} position='bottom' onClose={closePop} >
+        <Tabs active="a" animated>
           <Tabs.TabPane name='a' title="国内">
-            <section className='airport-city'>
-              <div className='airport-city__hot'>
-                <p>热门</p>
-                <ul className='airport-city__hot-list'>
-                  {
-                    hl.map((im: AirPortCityHot, idx) => {
-
-                      return (
-                        <li className='airport-city__hot-item' key={idx}>
-                          <div className=''>
-                            {im.name}
-                          </div>
-                        </li>
-                      )
-                    })
-                  }
-                </ul>
-              </div>
-              <div className='airport-city__letter'>
-                <p>字母索引</p>
-                <ul>
-                  {
-                    pl.map((im: AirPortCityIndex, idx) => {
-
-                      return (
-                        <li className='airport-city__hot-item' key={idx}>
-                          <div className=''>
-                            {im.p}
-                          </div>
-                        </li>
-                      )
-                    })
-                  }
-                </ul>
-              </div>
-              <div className='airport-city__index'>
-                { 
-                  pl.map((im: AirPortCityIndex, idx) => {
-
-                    return (
-                      <div className='airport-city__hot-item' key={idx}>
-                        <p className=''>
-                          {im.p}
-                        </p>
-                        <ul>
-                          {
-                            im.cl.map((item, idx) => (
-                              <li>
-                                <div>
-                                  {item.name}
-                                </div>
-                              </li>
-                            ))
-                          }
-                        </ul>
-                      </div>
-                    )
-                  })
-                  }
-                <p></p>
-              </div>
-            </section>
+            <AirPortGn airportCity={inland} onCheck={onCheckCity}/>
           </Tabs.TabPane>
-          <Tabs.TabPane name='b' title="国际/港澳台">国际/港澳台</Tabs.TabPane>
+          <Tabs.TabPane name='b' title="国际/港澳台">
+            <AirportGJ airportCity={inter}/>
+          </Tabs.TabPane>
         </Tabs>
+
       </Popup>
     </section>
    

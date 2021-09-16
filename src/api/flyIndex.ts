@@ -6,3 +6,9 @@ export const getAirportList = (params) => request({
   data: params,
   method: 'get'
 });
+
+export const getInterAirportList = (params) => request({
+  url: '/flyIndex/getInterAirportList',
+  data: params,
+  method: 'get'
+});
