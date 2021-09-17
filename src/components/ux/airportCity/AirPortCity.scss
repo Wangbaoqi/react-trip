@@ -13,6 +13,7 @@
 @include b(airport-city-container) {
   height: calc(100vh - 88px);
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 @include b(airport-city) {
