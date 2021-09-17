@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-trip"]=this["webpackJsonpreact-trip"]||[]).push([[9],{151:function(t,c,e){"use strict";e.r(c);var s=e(3);c.default=function(){return Object(s.jsx)("section",{className:"",children:"book1"})}}}]);
+//# sourceMappingURL=9.0b4c6b98.chunk.js.map

@@ -1,0 +1,1 @@
+{"version":3,"sources":["views/signIn/SigninView.tsx"],"names":["SignIn"],"mappings":"mIAeeA,UAZA,WAGb,OACE","file":"static/js/11.334ff942.chunk.js","sourcesContent":["\n\n\nconst SignIn = () => {\n\n\n  return (\n    <div>\n      SignIn\n      \n    </div>\n  )\n}\n\n\nexport default SignIn"],"sourceRoot":""}

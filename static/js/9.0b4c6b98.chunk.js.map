@@ -1,0 +1,1 @@
+{"version":3,"sources":["views/airport/book1/Book1.tsx"],"names":["Book1","className"],"mappings":"kIAYeA,UAVD,WAGZ,OACE,yBAASC,UAAU,GAAnB","file":"static/js/9.0b4c6b98.chunk.js","sourcesContent":["\n\nconst Book1 = () => {\n\n\n  return (\n    <section className=''>\n      book1\n    </section>\n  )\n}\n\nexport default Book1"],"sourceRoot":""}

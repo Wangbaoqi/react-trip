@@ -1,0 +1,1 @@
+{"version":3,"sources":["views/register/RegisterView.tsx"],"names":["Register"],"mappings":"mIAceA,UAXE,WAGf,OACE","file":"static/js/10.4f1bcd61.chunk.js","sourcesContent":["\n\n\nconst Register = () => {\n\n\n  return (\n    <div>\n      register\n    </div>\n  )\n}\n\n\nexport default Register"],"sourceRoot":""}
