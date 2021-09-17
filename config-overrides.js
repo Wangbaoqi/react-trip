@@ -15,7 +15,7 @@ const {
 
 const path = require('path')
 
-
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 
 
@@ -36,12 +36,22 @@ const devServerConfig = () => config => {
   }
 }
 
+const addAnalyzer = () => config => {
+  if (process.env.BUNDLE_VISUALIZE == 1) {
+    config.plugins.push(new BundleAnalyzerPlugin());
+  }
+
+  return config;
+};
 
 
 module.exports = {
+  path: (paths, env) => {
+    return paths
+  },
 
   webpack: override(
-   
+    addAnalyzer(),
     addLessLoader({
       // 定制主题
       // 如果使用less-loader@5，请移除 lessOptions 这一级直接配置选项。

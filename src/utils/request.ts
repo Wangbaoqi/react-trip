@@ -3,6 +3,9 @@ import axios from 'axios';
 // import {store} from '@/store';
 // import router from '../router'
 
+
+
+
 const service = axios.create({
   baseURL: '/api',
   headers: {'Content-Type': 'application/json;charset=UTF-8'},
@@ -20,7 +23,9 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
   response => {
-    const {data} = response
+    const {data} = response;
+    console.log(response, 'response');
+    
     if(data.status == 200) {
       // Toast.clear();
       return data
@@ -39,7 +44,7 @@ service.interceptors.response.use(
       // Toast(data.msg);
       console.log(data.msg, 'api error');
       
-      return Promise.reject(new Error(data.msg || 'Error'));
+      // return Promise.reject(new Error(data.msg || 'Error'));
     }
   }
 )

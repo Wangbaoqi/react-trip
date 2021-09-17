@@ -5,7 +5,7 @@ import App from './App';
 import './style/index.scss';
 
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, HashRouter } from 'react-router-dom'
 
 import { store } from './app/store';
 
@@ -16,11 +16,11 @@ import '@/mocks';
 ReactDOM.render(
   <React.StrictMode>
     <React.Suspense fallback={'loading'}>
-      <BrowserRouter>
+      <HashRouter>
         <Provider store={store}>
           <App />
         </Provider>
-      </BrowserRouter>
+      </HashRouter>
     </React.Suspense>
   </React.StrictMode>,
   document.getElementById('root')

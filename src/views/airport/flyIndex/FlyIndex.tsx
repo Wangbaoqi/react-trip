@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FlyHeader, FlyCard, Counter } from '@/components/index'
 
 import { cacheGet, cacheSet } from '@/utils/cache';
-import { getAirportList, getInterAirportList } from '@/api/flyIndex'
+import { getAirportList, getInterAirportListIndex, getInterAirportListHot, getInterAirportListOther } from '@/api/flyIndex'
 import { AirPortCityData } from '@/components/ux/airportCity/PropTypes'
 
 import { changeTripType, updateCityInfo, updateCabinInfo, updateDateInfo, getFlyState } from "./FlyIndexSlice";
@@ -23,15 +23,13 @@ const defaultCityInfo = {
 }
 const FlyIndex = () => {
   const [toggleType, setToggleType] = useState(0);
-
-
   const [cityInfo, setCityInfo] = useState(defaultCityInfo);
 
   const flyState = useSelector(getFlyState);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getAirportList({}).then(res => {
+    getAirportList({}).then(async(res) => {
       console.log(res, 'airport list');
       const cityCacheData: AirPortCityData = {
         inland: {},
@@ -39,16 +37,16 @@ const FlyIndex = () => {
       }
       cityCacheData.inland = res.data;
 
-      // cacheSet('AIRPORT_LIST_CITY_CACHE', JSON.stringify(cityCacheData))
+      const { data: { hl = []} } = await getInterAirportListHot({})
+      const { data: { pl = []} } = await getInterAirportListIndex({})
+      const { data: { rg = []} } = await getInterAirportListOther({})
 
-      getInterAirportList({}).then(res => {
-        console.log(res, 'airport list');
-        // const cityCacheData = cacheGet('AIRPORT_LIST_CITY_CACHE')
-        cityCacheData.inter = res.data
-        cacheSet('AIRPORT_LIST_CITY_CACHE', JSON.stringify(cityCacheData))
-      })
+      cityCacheData.inter = { hl, pl, rg }
+      cacheSet('AIRPORT_LIST_CITY_CACHE', JSON.stringify(cityCacheData))
+    }).catch(err => {
+      console.log(err, 'getAirport fail');
+      
     })
-
     
   }, []);
 
@@ -91,10 +89,6 @@ const FlyIndex = () => {
         <FlyCard />
         <div className="fly__history"></div>
       </section>
-
-
-      <button onClick={() => dispatch(updateCabinInfo(2))}>changeCabin</button>
-      <button onClick={handleCityInfo}>changeCity</button>
 
     </div>
   );
