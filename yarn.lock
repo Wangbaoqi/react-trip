@@ -10208,10 +10208,10 @@ react-transition-group@^4.4.1:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react-vant@^0.5.6:
-  version "0.5.7"
-  resolved "https://registry.nlark.com/react-vant/download/react-vant-0.5.7.tgz#e30f28cf95464b7478b9516bcc964da34dd6171a"
-  integrity sha1-4w8oz5VGS3R4uVFrzJZNo03WFxo=
+react-vant@@latest:
+  version "1.0.0"
+  resolved "https://registry.nlark.com/react-vant/download/react-vant-1.0.0.tgz#8346221cdec16db66979f919db01831e6c5a0219"
+  integrity sha1-g0YiHN7BbbZpefkZ2wGDHmxaAhk=
   dependencies:
     "@vant/icons" "^1.7.0"
     "@vant/popperjs" "^1.1.0"

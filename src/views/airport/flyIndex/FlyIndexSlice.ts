@@ -2,6 +2,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "@/app/store";
 
+import { getAirportList, getInterAirportListIndex, getInterAirportListHot, getInterAirportListOther } from '@/api/flyIndex'
+import { AirPortCityData } from '@/views/airport/flyIndex/PropTypes';
+import { cacheGet, cacheSet } from '@/utils/cache';
+
 // import { fetchCount } from "./counterAPI";
 
 export interface FlyIndexState {
@@ -48,11 +52,10 @@ const initialState: FlyIndexState = {
 
 
 // async reducer
-// export const incrementAsync = createAsyncThunk(
+// export const getAirportCityAsync = createAsyncThunk(
 //   'counter/fetchCount',
-//   async (amount: number) => {
-//     const response = await fetchCount(amount);
-//     return response.data;
+//   async () => {
+    
 //   }
 // );
 

@@ -11,10 +11,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FlyHeader, FlyCard, Counter } from '@/components/index'
 
 import { cacheGet, cacheSet } from '@/utils/cache';
-import { getAirportList, getInterAirportListIndex, getInterAirportListHot, getInterAirportListOther } from '@/api/flyIndex'
-import { AirPortCityData } from '@/components/ux/airportCity/PropTypes'
+import { getAirportList } from './flyIndexAPI';
+import { AirPortCityData } from '@/views/airport/flyIndex/PropTypes'
 
-import { changeTripType, updateCityInfo, updateCabinInfo, updateDateInfo, getFlyState } from "./FlyIndexSlice";
+import { changeTripType, updateCityInfo, updateCabinInfo, updateDateInfo, getFlyState } from "./flyIndexSlice";
 
 const defaultCityInfo = {
   dep: {
@@ -29,25 +29,7 @@ const FlyIndex = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getAirportList({}).then(async(res) => {
-      console.log(res, 'airport list');
-      const cityCacheData: AirPortCityData = {
-        inland: {},
-        inter: {}
-      }
-      cityCacheData.inland = res.data;
-
-      const { data: { hl = []} } = await getInterAirportListHot({})
-      const { data: { pl = []} } = await getInterAirportListIndex({})
-      const { data: { rg = []} } = await getInterAirportListOther({})
-
-      cityCacheData.inter = { hl, pl, rg }
-      cacheSet('AIRPORT_LIST_CITY_CACHE', JSON.stringify(cityCacheData))
-    }).catch(err => {
-      console.log(err, 'getAirport fail');
-      
-    })
-    
+    getAirportList();
   }, []);
 
 

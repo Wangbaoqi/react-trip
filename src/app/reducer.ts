@@ -1,6 +1,6 @@
 
 import countReducer from "../components/counter/counterSlice"
-import flyIndexReducer from "@/views/airport/flyIndex/FlyIndexSlice"
+import flyIndexReducer from "@/views/airport/flyIndex/flyIndexSlice"
 
 
 const reducer = {

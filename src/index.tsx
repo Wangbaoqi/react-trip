@@ -11,7 +11,7 @@ import { store } from './app/store';
 
 import reportWebVitals from './reportWebVitals';
 
-import '@/mocks';
+// import '@/mocks';
 
 ReactDOM.render(
   <React.StrictMode>

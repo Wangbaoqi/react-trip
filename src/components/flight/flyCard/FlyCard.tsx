@@ -12,15 +12,15 @@ import {
   FlyCardTips 
 } from './index';
 import { cacheGet, cacheSet } from '@/utils/cache';
-import { updateCityInfo, getFlyState } from '@/views/airport/flyIndex/FlyIndexSlice'
+import { updateCityInfo, getFlyState } from '@/views/airport/flyIndex/flyIndexSlice'
 
-import { AirPortCity  } from '@/components';
+import { AirPortCity, CalenderPrice } from '@/components';
 
 const FlyCard = ({
 }) => {
 
-  // const
   const [cityShow, setCityShow] = useState(false);
+  const [calenderShow, setCalenderShow] = useState(false);
   const [isExchange, setIsExchange] = useState(0);
   const [cityType, setCityType] = useState(0);
 
@@ -32,7 +32,13 @@ const FlyCard = ({
   }, [])
 
   const handleExChange = () => {
-    
+    const {aName = '', aCode = '', dName = '', dCode = ''} = flyState;
+    dispatch(updateCityInfo({
+      aName: dName,
+      aCode: dCode,
+      dName: aName,
+      dCode: aCode
+    }))
     setIsExchange(1)
     setTimeout(() => {
       setIsExchange(0)
@@ -43,11 +49,13 @@ const FlyCard = ({
     setCityType(type)
     setCityShow(true)
   }
+  const handleCalenderShow = (type) => {
+    setCalenderShow(true)
+  }
 
   const handleCheckCity = (city) => {
     console.log(city, cityType, 'city');
     const { code, name} = city;
-    let cityInfo = {};
     if(cityType) {
       dispatch(updateCityInfo({
         aName: name,
@@ -60,21 +68,23 @@ const FlyCard = ({
       }))
     }
     setCityShow(false)
-
   }
 
+  const handelCheckDate = (date) => {
+
+  }
 
   return (
     <div className="fly-card mt-15 pa-20">
       <FlyCardCity isExchange={isExchange} handleChange={handleExChange} handleCity={handleCityShow}/>
-      <FlyCardDate />
+      <FlyCardDate handleCalender={handleCalenderShow}/>
       <Divider className='divider-line mv-10'/>
       <FlyCardCabin />
       <FlyCardSearch />
       <FlyCardTips />
 
       <AirPortCity visible={cityShow} onCheck={handleCheckCity} closePop={() => { setCityShow(false) }} />
-
+      <CalenderPrice visible={calenderShow} onConfirm={handelCheckDate} onClose={() => setCalenderShow(false)}  />
       
     </div>
   )

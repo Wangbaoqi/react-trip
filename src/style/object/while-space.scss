@@ -4,7 +4,7 @@
 
 $direction: (l left, r right, t top, b bottom);
 
-@for $i from 1 through 30 {
+@for $i from 1 through 50 {
 
   @each $type in m, p, v, h, a {
 

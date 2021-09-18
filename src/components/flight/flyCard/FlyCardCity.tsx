@@ -2,7 +2,7 @@
 
 import classNames from 'classnames';
 import { flyIndexCircle, flyIndexFly } from '@/assets/imgConf';
-import { updateCityInfo, getFlyState } from '@/views/airport/flyIndex/FlyIndexSlice'
+import { updateCityInfo, getFlyState } from '@/views/airport/flyIndex/flyIndexSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const FlyCardCity = ({

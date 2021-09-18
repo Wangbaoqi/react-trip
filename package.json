@@ -26,7 +26,7 @@
     "react-router-dom": "^5.2.1",
     "react-scripts": "4.0.3",
     "react-scroll": "^1.8.4",
-    "react-vant": "^0.5.6",
+    "react-vant": "@latest",
     "redux": "^4.1.1",
     "sass-resources-loader": "^2.2.4",
     "typescript": "^4.1.2",

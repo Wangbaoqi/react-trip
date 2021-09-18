@@ -1,0 +1,51 @@
+
+
+@include b(rv-calendar) {
+  @include e(popup) {
+    height: 100% !important;
+  }
+  @include e(body) {
+    padding: 0 5px;
+  }
+  @include e(header-title) {
+    height: auto;
+    line-height: normal;
+  }
+}
+
+
+
+@include b(calender-title) {
+
+  @include e(top) {
+    line-height: 44px;
+  }
+  @include e(bottom) {
+    @include box-center($justify:start);
+    border-bottom: 1px solid $border-color-primary;
+  }
+  @include e(item) {
+    line-height: 30px;
+    @include box-center($justify:start);
+    @include m(active) {
+      border-bottom: 2px solid $color-secondary;
+      color: $color-secondary;
+    }
+  }
+}
+
+@include b(calender-footer) {
+  margin: 0 -10px;
+
+  @include e(box) {
+    @include box-center($justify: space-between);
+
+
+  }
+  @include e(btn) {
+    width: 180px;
+    height: 30px;
+    border-radius: 6px;
+    background-color: $color-secondary;
+  }
+}

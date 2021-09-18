@@ -102,6 +102,11 @@
     border: 1px solid $border-color-primary;
     border-radius: 4px;
     margin-bottom: 10px;
+
+    @include m(active) {
+      color: $color-text-tertiary;
+      border: 1px solid $color-text-tertiary;
+    }
   }
   
 }

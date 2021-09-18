@@ -1,15 +1,9 @@
 //
 import { useState, useEffect } from "react";
-import { Popup, Tabs, Sidebar, IndexBar, Flex } from "react-vant";
+import { Flex } from "react-vant";
 import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import classNames from "classnames";
 
-import {
-  AirPortCityProp,
-  AirPortCityHot,
-  AirPortCityIndex,
-  AirPortGnProp,
-} from "./PropTypes";
 
 const AirPortGn = ({ 
   airportCity,
