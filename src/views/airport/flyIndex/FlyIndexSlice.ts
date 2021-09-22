@@ -5,6 +5,7 @@ import { RootState } from "@/app/store";
 import { getAirportList, getInterAirportListIndex, getInterAirportListHot, getInterAirportListOther } from '@/api/flyIndex'
 import { AirPortCityData } from '@/views/airport/flyIndex/PropTypes';
 import { cacheGet, cacheSet } from '@/utils/cache';
+import UtilDate from '@/utils/dateFormat'
 
 // import { fetchCount } from "./counterAPI";
 
@@ -33,7 +34,7 @@ export interface FlyIndexState {
 const initialState: FlyIndexState = {
   aCode: "BJS",
   aCttz: 0,
-  aDate: "2021-09-13",
+  aDate: UtilDate.format(UtilDate.add(new Date(), 'day', 3), 'YYYY-MM-DD'),
   adult: 1,
   aIsic: false,
   aName: "北京",
@@ -42,7 +43,7 @@ const initialState: FlyIndexState = {
   child: 0,
   dCode: "SHA",
   dCttz: 0,
-  dDate: "2021-09-11",
+  dDate: UtilDate.format(UtilDate.add(new Date(), 'day', 1), 'YYYY-MM-DD'),
   dIsic: false,
   dName: "上海",
   dPort: "",

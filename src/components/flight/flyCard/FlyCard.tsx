@@ -12,10 +12,11 @@ import {
   FlyCardTips 
 } from './index';
 import { cacheGet, cacheSet } from '@/utils/cache';
-import { updateCityInfo, getFlyState } from '@/views/airport/flyIndex/flyIndexSlice'
+import { updateCityInfo, updateDateInfo, getFlyState } from '@/views/airport/flyIndex/flyIndexSlice'
 
 import { AirPortCity, CalenderPrice } from '@/components';
-
+import { Calendar } from 'react-vant'
+import UtilDate from '@/utils/dateFormat';
 const FlyCard = ({
 }) => {
 
@@ -23,16 +24,17 @@ const FlyCard = ({
   const [calenderShow, setCalenderShow] = useState(false);
   const [isExchange, setIsExchange] = useState(0);
   const [cityType, setCityType] = useState(0);
+  const [dateType, setDateType] = useState(0);
 
   const flyState = useSelector(getFlyState);
   const dispatch = useDispatch();
+  const {aName = '', aCode = '', dName = '', dCode = '', tripType = 0, aDate = '', dDate = ''} = flyState;
 
   useEffect(() => {
     cacheSet('fly-index_exchange', isExchange);
   }, [])
 
   const handleExChange = () => {
-    const {aName = '', aCode = '', dName = '', dCode = ''} = flyState;
     dispatch(updateCityInfo({
       aName: dName,
       aCode: dCode,
@@ -50,7 +52,8 @@ const FlyCard = ({
     setCityShow(true)
   }
   const handleCalenderShow = (type) => {
-    setCalenderShow(true)
+    setDateType(type);
+    setCalenderShow(true);
   }
 
   const handleCheckCity = (city) => {
@@ -70,8 +73,26 @@ const FlyCard = ({
     setCityShow(false)
   }
 
-  const handelCheckDate = (date) => {
 
+  const handelConfirmDate = (date) => {
+    // const [ goDate = dDate, backDate = aDate ] = date;
+    // const ddDate = UtilDate.format(goDate, 'YYYY-MM-DD')
+    // const aaDate = UtilDate.format(backDate, 'YYYY-MM-DD')
+
+    console.log(date, 'confirm ddDate date');
+    // console.log(aaDate, 'confirm aaDate date');
+
+    dispatch(updateDateInfo({
+      aDate: date.backDate,
+      dDate: date.goDate,
+    }))
+    setCalenderShow(false)
+
+  }
+
+  const handelCheckDate = (date) => {
+    console.log(date, 'choose date');
+    
   }
 
   return (
@@ -84,8 +105,18 @@ const FlyCard = ({
       <FlyCardTips />
 
       <AirPortCity visible={cityShow} onCheck={handleCheckCity} closePop={() => { setCityShow(false) }} />
-      <CalenderPrice visible={calenderShow} onConfirm={handelCheckDate} onClose={() => setCalenderShow(false)}  />
+      <CalenderPrice 
+        visible={calenderShow} 
+        type={tripType}
+        dateType={dateType}
+        dDate={dDate}
+        aDate={aDate}
+        onConfirm={handelConfirmDate} 
+        onClose={() => setCalenderShow(false)} 
+        onChangeDate={type => setDateType(type)}
+      />
       
+
     </div>
   )
 }

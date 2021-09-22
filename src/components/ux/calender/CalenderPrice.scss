@@ -24,14 +24,23 @@
     @include box-center($justify:start);
     border-bottom: 1px solid $border-color-primary;
   }
+  @include e(item-inner) {
+    border-bottom: 2px solid $color-white;
+
+  }
   @include e(item) {
     line-height: 30px;
+    &:first-child {
+      margin-right: 40px;
+    }
     @include box-center($justify:start);
     @include m(active) {
       border-bottom: 2px solid $color-secondary;
       color: $color-secondary;
     }
   }
+  
+
 }
 
 @include b(calender-footer) {

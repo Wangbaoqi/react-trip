@@ -49,7 +49,17 @@ interface AirPortCityProp {
   closePop?: () => void
 }
 
-
+interface CalenderPriceProp {
+  visible?: boolean,
+  type?: string,
+  dateType?: number,
+  dDate?: string,
+  aDate?: string,
+  onConfirm?: (e: Date[]) => void,
+  onClose?: () => void,
+  onSelect?: (e: Date[]) => void,
+  onChangeDate?: (e: number) => void
+}
 
 
 
@@ -59,6 +69,7 @@ export type {
   AirPortCityState,
   AirPortCityProp,
   AirPortGnProp,
+  CalenderPriceProp,
   AirPortCityHot,
   AirPortCityIndex,
   AirPortCityInter
