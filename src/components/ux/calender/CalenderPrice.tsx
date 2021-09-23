@@ -2,10 +2,11 @@
 
 import { Calendar, Popup, Button } from "react-vant";
 import UtilDate from "@/utils/dateFormat";
-import "./CalenderPrice.scss";
+import { cacheGet, cacheSet } from '@/utils/cache';
 import { useState, useEffect } from "react";
 import classNames from "classnames";
 import { CalenderPriceProp } from "@/views/airport/flyIndex/PropTypes";
+import "./CalenderPrice.scss";
 
 const CalenderPrice = ({
   visible,
@@ -19,13 +20,21 @@ const CalenderPrice = ({
 }) => {
   const gDate = new Date(dDate);
   const bDate = new Date(aDate);
+  const defaultMinDate = new Date();
+  const defaultMaxDate = UtilDate.add(defaultMinDate, 'month', 6).toDate();
+  const holidayList = cacheGet('HOLIDAY_DAY_CACHE') || [];
+
+  console.log(holidayList, "holidayList");
 
   const [defaultDate, setDefaultDate] = useState(dateType ? bDate : gDate);
   const [goDate, setGoDate] = useState(gDate);
   const [backDate, setBackDate] = useState(bDate);
   const [dateTabType, setDateTabType] = useState(dateType);
   const [dateTip, setDateTip] = useState(false);
+  const [minDate, setMinDate] = useState(defaultMinDate);
+  const [maxDate, setMaxDate] = useState(defaultMaxDate);
   const [confirmText, setConfirmText] = useState('确定');
+
 
 
 
@@ -48,7 +57,6 @@ const CalenderPrice = ({
   };
 
   const handelSelectDate = (date) => {
-    console.log(date, "date");
     setDateTip(false)
 
     // 返程
@@ -150,17 +158,35 @@ const CalenderPrice = ({
       </p>
     </div>
   );
+
+  const formatter = (day) => {
+    const dayWeek =  day.date.getDay();
+    // console.log(day, dayDate,'dayDate');
+    const isToday = UtilDate.isSame(new Date(), day.date, 'day')
+    const isWeekend = dayWeek == 0 || dayWeek == 6
+    if(isToday) {
+      day.text = '今天'
+    }
+    if(isWeekend) {
+      day.className = 'calender-price__week-end'
+    }
+    
+    return day
+    
+  }
+
   return (
     <section className="calender-price">
       <Calendar
         className="calender-price"
         title={title}
         visible={visible}
-        // type={type}
+        minDate={minDate}
+        maxDate={maxDate}
         defaultDate={defaultDate}
-        // footer={footer}
         confirmText={confirmText}
         color="#0086f6"
+        formatter={formatter}
         round={false}
         showMark={false}
         onSelect={handelSelectDate}

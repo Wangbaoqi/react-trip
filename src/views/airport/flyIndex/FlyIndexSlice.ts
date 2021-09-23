@@ -2,7 +2,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "@/app/store";
 
-import { getAirportList, getInterAirportListIndex, getInterAirportListHot, getInterAirportListOther } from '@/api/flyIndex'
 import { AirPortCityData } from '@/views/airport/flyIndex/PropTypes';
 import { cacheGet, cacheSet } from '@/utils/cache';
 import UtilDate from '@/utils/dateFormat'

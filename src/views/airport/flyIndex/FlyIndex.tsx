@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FlyHeader, FlyCard, Counter } from '@/components/index'
 
 import { cacheGet, cacheSet } from '@/utils/cache';
-import { getAirportList } from './flyIndexAPI';
+import { getAirportList, getCalenderHoliday } from './flyIndexAPI';
 import { AirPortCityData } from '@/views/airport/flyIndex/PropTypes'
 
 import { changeTripType, updateCityInfo, updateCabinInfo, updateDateInfo, getFlyState } from "./flyIndexSlice";
@@ -30,6 +30,7 @@ const FlyIndex = () => {
 
   useEffect(() => {
     getAirportList();
+    getCalenderHoliday();
   }, []);
 
 

@@ -8,7 +8,8 @@ const cacheSet = (key, val) =>  {
 
 // eetItem
 const cacheGet = (key) => {
-  return localStorage.getItem(key)
+  const item = localStorage.getItem(key);
+  return item ? JSON.parse(item) : ''
 }
 // removeItem
 

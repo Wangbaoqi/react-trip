@@ -11,9 +11,16 @@
     height: auto;
     line-height: normal;
   }
+  
 }
 
+@include b(calender-price) {
 
+  
+  @include e(week-end) {
+    color: $color-text-eighth;
+  } 
+}
 
 @include b(calender-title) {
 

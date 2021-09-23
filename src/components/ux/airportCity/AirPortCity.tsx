@@ -23,11 +23,10 @@ const AirPortCity = ({
 
   useEffect(() => {
 
-    const cityCacheData: string | null = cacheGet('AIRPORT_LIST_CITY_CACHE');
+    const cityCacheData = cacheGet('AIRPORT_LIST_CITY_CACHE');
 
     if(cityCacheData) {
-      const cityData = JSON.parse(cityCacheData)
-      setAirportCity(cityData)
+      setAirportCity(cityCacheData)
     }else {
       
     }

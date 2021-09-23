@@ -11,7 +11,7 @@ const UtilDate = {
    * @returns 
    */
   format: (date, type) => {
-    if(!type) return date;
+    if(!type) return dayjs(new Date()).format();
     return dayjs(new Date(date)).format(type)
   },
   /**
@@ -22,6 +22,7 @@ const UtilDate = {
   add: (date, type = 'day', value = 1) => {
     return dayjs(new Date(date)).add(value, type)
   },
+
 
   /**
    * 
@@ -39,6 +40,17 @@ const UtilDate = {
     }else {
       return dayEnum[diffDay];
     }
+  },
+
+  /**
+   * 
+   * @param date1 
+   * @param date2 
+   * @param type day | month | year
+   * @returns 
+   */
+  isSame: (date1, date2, type) => {
+    return dayjs(new Date(date1)).isSame(new Date(date2), type)
   }
 }
 
