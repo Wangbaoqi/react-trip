@@ -1,0 +1,13 @@
+
+
+
+@include b(select-cabin) {
+
+  @include e(item) {
+    @include box-center($justify: space-between)
+
+    @include m(select) {
+      color: $color-text-tertiary;
+    }
+  }
+}

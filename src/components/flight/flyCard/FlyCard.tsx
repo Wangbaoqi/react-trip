@@ -1,8 +1,4 @@
-
-import React, { useEffect, useState } from 'react'
-
-import './FlyCard.scss';
-import { Divider } from 'react-vant';
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { 
   FlyCardCity, 
@@ -11,24 +7,26 @@ import {
   FlyCardSearch, 
   FlyCardTips 
 } from './index';
-import { cacheGet, cacheSet } from '@/utils/cache';
-import { updateCityInfo, updateDateInfo, getFlyState } from '@/views/airport/flyIndex/flyIndexSlice'
+import { cacheSet } from '@/utils/cache';
+import { updateCityInfo, updateDateInfo,updateCabinInfo, getFlyState } from '@/views/airport/flyIndex/flyIndexSlice'
+import { AirPortCity, CalenderPrice, CabinSelect } from '@/components';
+import { Divider } from 'react-vant';
+import './FlyCard.scss';
 
-import { AirPortCity, CalenderPrice } from '@/components';
-import { Calendar } from 'react-vant'
-import UtilDate from '@/utils/dateFormat';
 const FlyCard = ({
 }) => {
+  const cabinList = ['经济舱', '公务舱/头等舱']
+  const flyState = useSelector(getFlyState);
+  const dispatch = useDispatch();
+  const {aName = '', aCode = '', dName = '', dCode = '', tripType = 0, aDate = '', dDate = '', selectCabin = 0 } = flyState;
 
   const [cityShow, setCityShow] = useState(false);
   const [calenderShow, setCalenderShow] = useState(false);
+  const [cabinShow, setCabinShow] = useState(false);
+  const [cabinCheckId, setCabinCheckId] = useState(selectCabin);
   const [isExchange, setIsExchange] = useState(0);
   const [cityType, setCityType] = useState(0);
   const [dateType, setDateType] = useState(0);
-
-  const flyState = useSelector(getFlyState);
-  const dispatch = useDispatch();
-  const {aName = '', aCode = '', dName = '', dCode = '', tripType = 0, aDate = '', dDate = ''} = flyState;
 
   useEffect(() => {
     cacheSet('fly-index_exchange', isExchange);
@@ -73,26 +71,18 @@ const FlyCard = ({
     setCityShow(false)
   }
 
+  const handleSelectCabin = (id) => {
+    dispatch(updateCabinInfo(id))
+    setCabinCheckId(id)
+    setCabinShow(false)
+  }
 
   const handelConfirmDate = (date) => {
-    // const [ goDate = dDate, backDate = aDate ] = date;
-    // const ddDate = UtilDate.format(goDate, 'YYYY-MM-DD')
-    // const aaDate = UtilDate.format(backDate, 'YYYY-MM-DD')
-
-    console.log(date, 'confirm ddDate date');
-    // console.log(aaDate, 'confirm aaDate date');
-
     dispatch(updateDateInfo({
       aDate: date.backDate,
       dDate: date.goDate,
     }))
     setCalenderShow(false)
-
-  }
-
-  const handelCheckDate = (date) => {
-    console.log(date, 'choose date');
-    
   }
 
   return (
@@ -100,11 +90,16 @@ const FlyCard = ({
       <FlyCardCity isExchange={isExchange} handleChange={handleExChange} handleCity={handleCityShow}/>
       <FlyCardDate handleCalender={handleCalenderShow}/>
       <Divider className='divider-line mv-10'/>
-      <FlyCardCabin />
+      <FlyCardCabin cabinId={cabinCheckId} cabinList={cabinList} handleCabin={() => setCabinShow(true)}/>
       <FlyCardSearch />
       <FlyCardTips />
-
-      <AirPortCity visible={cityShow} onCheck={handleCheckCity} closePop={() => { setCityShow(false) }} />
+      {/* pop city */}
+      <AirPortCity 
+        visible={cityShow} 
+        onCheck={handleCheckCity} 
+        closePop={() => { setCityShow(false) }} 
+      />
+      {/* pop Calender */}
       <CalenderPrice 
         visible={calenderShow} 
         type={tripType}
@@ -115,8 +110,14 @@ const FlyCard = ({
         onClose={() => setCalenderShow(false)} 
         onChangeDate={type => setDateType(type)}
       />
-      
-
+      {/* pop cabin */}
+      <CabinSelect 
+        visible={cabinShow} 
+        cabinList={cabinList} 
+        checkedId={cabinCheckId} 
+        selectCabin={handleSelectCabin}
+        closeCabin={() => setCabinShow(false)}
+      />
     </div>
   )
 }

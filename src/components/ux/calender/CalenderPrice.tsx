@@ -22,9 +22,6 @@ const CalenderPrice = ({
   const bDate = new Date(aDate);
   const defaultMinDate = new Date();
   const defaultMaxDate = UtilDate.add(defaultMinDate, 'month', 6).toDate();
-  const holidayList = cacheGet('HOLIDAY_DAY_CACHE') || [];
-
-  console.log(holidayList, "holidayList");
 
   const [defaultDate, setDefaultDate] = useState(dateType ? bDate : gDate);
   const [goDate, setGoDate] = useState(gDate);
@@ -184,7 +181,6 @@ const CalenderPrice = ({
         minDate={minDate}
         maxDate={maxDate}
         defaultDate={defaultDate}
-        confirmText={confirmText}
         color="#0086f6"
         formatter={formatter}
         round={false}

@@ -46,7 +46,7 @@ const initialState: FlyIndexState = {
   dIsic: false,
   dName: "上海",
   dPort: "",
-  selectCabin: 1,
+  selectCabin: 0,
   tripType: 0,
 }
 

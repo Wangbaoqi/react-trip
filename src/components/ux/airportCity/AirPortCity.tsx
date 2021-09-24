@@ -1,16 +1,10 @@
-
-// 
 import { useState, useEffect } from "react";
-import { Popup, Tabs, Sidebar, IndexBar, Cell } from "react-vant";
+import { Popup, Tabs } from "react-vant";
 import AirPortGn from "./AirportGn";
 import AirportGJ from "./AirportGJ";
-import { AirPortCityProp, AirPortCityHot, AirPortCityIndex, AirPortCityState, AirPortCityData } from '@/views/airport/flyIndex/PropTypes';
+import { AirPortCityProp, AirPortCityData } from '@/views/airport/flyIndex/PropTypes';
 import { cacheGet } from '@/utils/cache';
-
-
 import './AirPortCity.scss'
-
-
 
 const AirPortCity = ({
   visible,
@@ -18,25 +12,17 @@ const AirPortCity = ({
   title='选择城市',
   closePop
 }: AirPortCityProp) => {
-
   const [airportCity, setAirportCity] = useState<AirPortCityData>({} as AirPortCityData)
-
   useEffect(() => {
-
     const cityCacheData = cacheGet('AIRPORT_LIST_CITY_CACHE');
-
     if(cityCacheData) {
       setAirportCity(cityCacheData)
-    }else {
-      
     }
-
   }, []);
 
   const { inland = {}, inter = {} } = airportCity
   const { hl = [], pl = []} = inland;
   const { rg = [] } = inter;
-
 
   // TODO update has better ?
   const onCheckCity = (city) => {
@@ -79,7 +65,6 @@ const AirPortCity = ({
       ...inter
     })
     onCheck && onCheck(city)
-    
   }
 
   return (
@@ -92,9 +77,7 @@ const AirPortCity = ({
           <AirportGJ airportCity={inter} onCheck={onCheckInCity}/>
         </Tabs.TabPane>
       </Tabs>
-
     </Popup>
-   
   )
 }
 
