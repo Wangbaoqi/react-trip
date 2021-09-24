@@ -1,12 +1,7 @@
 
-
 import { Button } from 'react-vant';
 
-
-const FlyCardSearch = ({
- 
-}) => {
-
+const FlyCardSearch = () => {
 
   return (
     <section className='fly-card__search mt-20'>

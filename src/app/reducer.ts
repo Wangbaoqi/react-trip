@@ -1,5 +1,5 @@
 
-import countReducer from "../components/counter/counterSlice"
+import countReducer from "@/components/extra/counter/counterSlice"
 import flyIndexReducer from "@/views/airport/flyIndex/flyIndexSlice"
 
 

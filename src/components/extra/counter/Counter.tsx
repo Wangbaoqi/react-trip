@@ -1,12 +1,7 @@
 
-import React, { useRef, useState } from 'react';
-
-
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Counter.scss';
-
-
-
 import { increment, decrement, incrementByAmount, selectCount, incrementAsync } from './counterSlice';
 
 const Counter = () => {
@@ -18,7 +13,6 @@ const Counter = () => {
 
 
   const incrementValue = Number(incrementAmount) || 0;
-
 
   return (
     <div>

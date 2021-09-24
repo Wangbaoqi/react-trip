@@ -5,8 +5,6 @@ const FlyCardCabin = ({
   cabinList,
   handleCabin
 }) => {
-
-
   return (
     <section className='fly-card__cabin mt-20' onClick={handleCabin}>
       {cabinList[cabinId]}

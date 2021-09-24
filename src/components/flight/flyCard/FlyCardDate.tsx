@@ -1,6 +1,6 @@
 
 import UtilDate from '@/utils/dateFormat';
-import { updateCityInfo, getFlyState } from '@/views/airport/flyIndex/flyIndexSlice';
+import { getFlyState } from '@/views/airport/flyIndex/flyIndexSlice';
 import { useSelector } from 'react-redux';
 
 
@@ -18,7 +18,7 @@ const FlyCardDate = ({
         <label className='fly-card_date-tip font-14 ml-5'>{UtilDate.week(flyState.dDate)}</label>
       </div>
       {
-        flyState.tripType == 1  
+        flyState.tripType === 1  
           ? <div className='fly-card__date-item' onClick={() => handleCalender(1)}>
               <label className='fly-card_date-label font-22 font-w-700'>{UtilDate.format(flyState.aDate, 'MM月DD日')}</label>
               <label className='fly-card_date-tip font-14 ml-5'>{UtilDate.week(flyState.aDate)}</label>

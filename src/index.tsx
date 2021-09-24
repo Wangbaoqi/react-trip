@@ -1,13 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-
-import './style/index.scss';
-
 import { Provider } from 'react-redux';
-import { BrowserRouter, HashRouter } from 'react-router-dom'
-
+import { HashRouter } from 'react-router-dom'
 import { store } from './app/store';
+import './style/index.scss';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -15,7 +12,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <React.Suspense fallback={'loading'}>
+    <React.Suspense fallback={''}>
       <HashRouter>
         <Provider store={store}>
           <App />

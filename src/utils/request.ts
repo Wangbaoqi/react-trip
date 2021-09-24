@@ -26,10 +26,10 @@ service.interceptors.response.use(
     const {data} = response;
     console.log(response, 'response');
     
-    if(data.status == 200) {
+    if(data.status === 200) {
       // Toast.clear();
       return data
-    } else if(data.status == 403) {
+    } else if(data.status === 403) {
       // go login
       // Toast({
       //   message: "去登录",

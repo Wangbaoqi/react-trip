@@ -1,29 +1,20 @@
 
 
 import { Swipe } from 'react-vant';
-
 import classNames from 'classnames';
 import './HomeCard.scss';
 
-
-
-
-// const home
-
-
 const HomeCardSwiper = ({itemList}) => {
-
 
   return (
     <Swipe 
       pagination={{
-        renderBullet: (index, className) => {
+        renderBullet: (className) => {
           return `<span class="home-card-swiper--bullet ${className}"></span>`;
         },
       }}
       className='home-card-swiper'
     >
-      
       {
         itemList.map((im,id) => {
           return (
@@ -44,7 +35,6 @@ const HomeCardSwiper = ({itemList}) => {
                     </div> : 
                     <div className='home-card-swiper__title'>{im.title}</div>
                   }
-                  
                 </div>
             </Swipe.Item>
           )
@@ -56,8 +46,6 @@ const HomeCardSwiper = ({itemList}) => {
 }
 
 const HomeCardTop = ({itemList}) => {
-
-
   return (
     <section className='home-card-rank'>
       {
@@ -78,9 +66,6 @@ const HomeCardTop = ({itemList}) => {
 }
 
 const HomeCard = ({cardList}) => {
-
-  console.log(cardList);
-
   return (
     <section className='home-card'>
       {
@@ -92,7 +77,7 @@ const HomeCard = ({cardList}) => {
                 im.items.map((ims, idx) => {
                   const cardTitleCls = classNames({
                     'home-card__title': true,
-                    'home-card--rank': ims.blockType == 'rank'
+                    'home-card--rank': ims.blockType === 'rank'
                   })
                   return (
                     <div className='home-card__item' key={idx}>
@@ -102,7 +87,7 @@ const HomeCard = ({cardList}) => {
                       </a>
                       <section className='home-card__box'>
                         {
-                          ims.blockType == 'rank' ? <HomeCardTop itemList={ims.items}/> : <HomeCardSwiper itemList={ims.items}/>
+                          ims.blockType === 'rank' ? <HomeCardTop itemList={ims.items}/> : <HomeCardSwiper itemList={ims.items}/>
                         }
                         
                       </section>
@@ -115,11 +100,6 @@ const HomeCard = ({cardList}) => {
           )
         })
       }
-      
-
-      {/* <div className='home-card__item'>
-
-      </div> */}
     </section>
   )
 

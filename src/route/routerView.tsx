@@ -1,14 +1,7 @@
 
-import { Switch, Route, NavLink, Redirect } from 'react-router-dom'
-
-
+import { Switch, Route } from 'react-router-dom'
 import routesConf from './routeConfig';
-
-
-
-
 const RouteWithSubRoutes = (route) => {
-
   return (
     <Route
       path={route.path}
@@ -21,7 +14,6 @@ const RouteWithSubRoutes = (route) => {
 }
 
 const RouterView = () => {
-
   return (
     <Switch>
       {

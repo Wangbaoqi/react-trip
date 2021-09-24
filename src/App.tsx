@@ -1,15 +1,6 @@
-import React, { Suspense, useEffect } from 'react';
-
-
-import { Switch, Route, Redirect } from 'react-router-dom'
-
-
+import { useEffect } from 'react';
 import RouterView from '@/route/routerView'
-
-
 import Layout from './components/layout/Layout';
-
-
 
 function setRem () {
   // 当前页面宽度相对于 750 宽的缩放比例，可根据自己需要修改。
@@ -20,22 +11,15 @@ function setRem () {
 
 window.onresize = function () {
   setRem()
-  console.log('size');
-  
 }
 
 const App = () => {
-  
-
   useEffect(() => {
-
     const mediaQueryListDark = window.matchMedia('(prefers-color-scheme: dark)')
-
     window.document.documentElement.setAttribute(
       "data-theme",
       "default"
     );
-
     const handleChange = (mediaQueryListEvent) => {
       if (mediaQueryListEvent.matches) {
         // 用户切换到了暗色(dark)主题
@@ -53,12 +37,10 @@ const App = () => {
         );
       }
     }
-
     mediaQueryListDark.addListener(handleChange);
     return () => {
       mediaQueryListDark.removeListener(handleChange)
     }
-
   })
   
   return (

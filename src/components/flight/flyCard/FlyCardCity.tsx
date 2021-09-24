@@ -1,9 +1,7 @@
-
-
 import classNames from 'classnames';
 import { flyIndexCircle, flyIndexFly } from '@/assets/imgConf';
-import { updateCityInfo, getFlyState } from '@/views/airport/flyIndex/flyIndexSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { getFlyState } from '@/views/airport/flyIndex/flyIndexSlice';
+import { useSelector } from 'react-redux';
 
 const FlyCardCity = ({
   handleChange,
@@ -12,21 +10,15 @@ const FlyCardCity = ({
 }) => {
 
   const flyState = useSelector(getFlyState);
-
-
   const startCls = classNames('fly-card__city-item', 'fly-card__city-start', 'font-24', 'text-left', {
     'fly-card__city--trans-left': isExchange
   })
-
   const endCls = classNames('fly-card__city-item', 'fly-card__city-end', 'font-24', 'text-right', {
     'fly-card__city--trans-right': isExchange
   })
-
   const iconCls = classNames({
     'fly-card__city-icon--trans': isExchange
   })
-
-
   return (
     <section className='fly-card__city'>
       <div className={startCls} onClick={() => handleCity(0)}>{flyState.dName}</div>

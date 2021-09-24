@@ -26,21 +26,20 @@ const AirPortCity = ({
 
   // TODO update has better ?
   const onCheckCity = (city) => {
-    hl.map(e => {
-      e.checked = false
-      if(e.name == city.name) {
-        e.checked = !e.checked
+    for (const im of hl) {
+      im.checked = false;
+      if(im.name === city.name) {
+        im.checked = !im.checked;
       }
-    })
-    pl.map(({cl = []}) => {
-      cl.map(e => {
-        e.checked = false
-        if(e.name == city.name) {
-          e.checked = !e.checked
+    }
+    for (const im of pl) {
+      for (const it of im.cl) {
+        it.checked = false;
+        if(it.name === city.name) {
+          it.checked = !it.checked
         }
-      })
-    })
-   
+      }
+    }
     setAirportCity({
       ...airportCity,
       ...inland
@@ -50,16 +49,16 @@ const AirPortCity = ({
 
   // TODO update has better ?
   const onCheckInCity = (city) => {
-    rg.map(e => {
-      e.areal?.map(im => {
-        im.cl?.map(it => {
-          it.checked = false;
-          if(it.name == city.name) {
-            it.checked = !it.checked;
+    for (const im of rg) {
+      for (const it of im.areal) {
+        for (const iu of it.cl) {
+          iu.checked = false;
+          if(iu.name === city.name) {
+            iu.checked = !iu.checked;
           }
-        })
-      })
-    })
+        }
+      }
+    }
     setAirportCity({
       ...airportCity,
       ...inter

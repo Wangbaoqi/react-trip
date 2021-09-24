@@ -1,11 +1,7 @@
-//
-
-import { Calendar, Popup, Button } from "react-vant";
+import { Calendar } from "react-vant";
 import UtilDate from "@/utils/dateFormat";
-import { cacheGet, cacheSet } from '@/utils/cache';
 import { useState, useEffect } from "react";
 import classNames from "classnames";
-import { CalenderPriceProp } from "@/views/airport/flyIndex/PropTypes";
 import "./CalenderPrice.scss";
 
 const CalenderPrice = ({
@@ -16,24 +12,19 @@ const CalenderPrice = ({
   aDate,
   onConfirm,
   onClose,
-  onChangeDate,
 }) => {
   const gDate = new Date(dDate);
   const bDate = new Date(aDate);
-  const defaultMinDate = new Date();
-  const defaultMaxDate = UtilDate.add(defaultMinDate, 'month', 6).toDate();
+  // const defaultMinDate = new Date();
+  // const defaultMaxDate = UtilDate.add(defaultMinDate, 'month', 6).toDate();
 
   const [defaultDate, setDefaultDate] = useState(dateType ? bDate : gDate);
   const [goDate, setGoDate] = useState(gDate);
   const [backDate, setBackDate] = useState(bDate);
   const [dateTabType, setDateTabType] = useState(dateType);
   const [dateTip, setDateTip] = useState(false);
-  const [minDate, setMinDate] = useState(defaultMinDate);
-  const [maxDate, setMaxDate] = useState(defaultMaxDate);
-  const [confirmText, setConfirmText] = useState('确定');
-
-
-
+  // const [minDate, setMinDate] = useState(defaultMinDate);
+  // const [maxDate, setMaxDate] = useState(defaultMaxDate);
 
   useEffect(() => {
     setGoDate(gDate);
@@ -41,7 +32,6 @@ const CalenderPrice = ({
     setDateTabType(dateType);
     setDefaultDate(dateType ? bDate : gDate)
   }, [visible]);
-
 
   const handelCheckDate = (type) => {
     setDateTabType(type);
@@ -53,16 +43,15 @@ const CalenderPrice = ({
     
   };
 
+  // TODO 
   const handelSelectDate = (date) => {
     setDateTip(false)
-
     // 返程
     if(dateTabType) {
       if(goDate > date) {
         setDateTip(true)
         setBackDate(new Date('1995-04-09'))
         setGoDate(date)
-
       }else {
         setBackDate(date)
       }
@@ -77,30 +66,25 @@ const CalenderPrice = ({
   };
 
   const handleConfirmDate = (date) => {
-    console.log(date, "confirm date");
-
     if(goDate && backDate) {
       onConfirm && onConfirm({
         goDate: UtilDate.format(goDate, 'YYYY-MM-DD'), 
         backDate: UtilDate.format(backDate, 'YYYY-MM-DD')
       })
     }
-    
   }
 
   const tabCls = (type) => {
     return classNames({
       "calender-title__item-inner": true,
-      "calender-title__item--active": dateTabType == type,
+      "calender-title__item--active": dateTabType === type,
     });
   }
-
- 
 
   const title = (
     <section className="calender-title ph-15 mb-5 font-18 font-w-500">
       <p className="calender-title__top font-20 text-left">
-        选择{dateTabType == 0 ? "去程" : "返程"}日期
+        选择{dateTabType === 0 ? "去程" : "返程"}日期
       </p>
       {type ? (
         <div className="calender-title__bottom font-16">
@@ -139,28 +123,28 @@ const CalenderPrice = ({
     </section>
   );
 
-  const footer = (
-    <div className="calender-footer pv-10">
-      <section className="calender-footer__box font-14 ph-10 mb-10">
-        <div className="calender-footer__price">往返总价: --</div>
-        <Button
-          className="calender-footer__btn font-14"
-          type="primary"
-          text="确定"
-          onClick={onConfirm}
-        />
-      </section>
-      <p className="font-9">
-        所选日期为出发地日期，价格变动频繁，以实际支付时的价格为准
-      </p>
-    </div>
-  );
+  // const footer = (
+  //   <div className="calender-footer pv-10">
+  //     <section className="calender-footer__box font-14 ph-10 mb-10">
+  //       <div className="calender-footer__price">往返总价: --</div>
+  //       <Button
+  //         className="calender-footer__btn font-14"
+  //         type="primary"
+  //         text="确定"
+  //         onClick={onConfirm}
+  //       />
+  //     </section>
+  //     <p className="font-9">
+  //       所选日期为出发地日期，价格变动频繁，以实际支付时的价格为准
+  //     </p>
+  //   </div>
+  // );
 
   const formatter = (day) => {
     const dayWeek =  day.date.getDay();
     // console.log(day, dayDate,'dayDate');
     const isToday = UtilDate.isSame(new Date(), day.date, 'day')
-    const isWeekend = dayWeek == 0 || dayWeek == 6
+    const isWeekend = dayWeek === 0 || dayWeek === 6
     if(isToday) {
       day.text = '今天'
     }
@@ -178,8 +162,8 @@ const CalenderPrice = ({
         className="calender-price"
         title={title}
         visible={visible}
-        minDate={minDate}
-        maxDate={maxDate}
+        // minDate={minDate}
+        // maxDate={maxDate}
         defaultDate={defaultDate}
         color="#0086f6"
         formatter={formatter}

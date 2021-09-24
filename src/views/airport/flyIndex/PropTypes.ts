@@ -14,8 +14,8 @@ type AirPortCityState = {
 
 
 type AirPortCityIndex = {
-  p?: string,
-  cl?: Array<AirPortCityHot>,
+  p: string,
+  cl: Array<AirPortCityHot>,
 }
 
 type AirPortCityData = {

@@ -1,9 +1,9 @@
 
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "@/app/store";
 
-import { AirPortCityData } from '@/views/airport/flyIndex/PropTypes';
-import { cacheGet, cacheSet } from '@/utils/cache';
+// import { AirPortCityData } from '@/views/airport/flyIndex/PropTypes';
+// import { cacheGet, cacheSet } from '@/utils/cache';
 import UtilDate from '@/utils/dateFormat'
 
 // import { fetchCount } from "./counterAPI";

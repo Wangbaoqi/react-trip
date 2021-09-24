@@ -1,25 +1,14 @@
-import React, { useEffect, useState } from "react";
-import {
-  Link,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller
-} from "react-scroll";
+import { useEffect, useState } from "react";
 import { AirPortCityIndex } from '@/views/airport/flyIndex/PropTypes';
-
 import { Sidebar, Flex } from 'react-vant';
 import classNames from "classnames";
-
 
 const AirportGJ = ({
   airportCity,
   onCheck
 }) => {
   const [active, setActive] = useState(0);
-  const { hl = [], pl = [], rg = [] } = airportCity;
-
+  const { rg = [] } = airportCity;
   const [activeList, setActiveList] = useState<AirPortCityIndex[]>([]);
 
   useEffect(() => {
@@ -27,11 +16,9 @@ const AirportGJ = ({
     rg[0]?.areal && setActiveList(rg[0].areal)
   }, []);
   
-  
   const checkCityType = (item) => {
     setActiveList(item.areal)
   }
-
   
   return (
     <section className='airport-inCity'>
@@ -61,7 +48,7 @@ const AirportGJ = ({
                             'airport-inCity__item-block--active': it.checked
                           })
                           return (
-                            <Flex.Item span={idx == 0 ? 8 : 12} key={i}>
+                            <Flex.Item span={idx === 0 ? 8 : 12} key={i}>
                               <div className={inCityCls} onClick={() => onCheck(it)}>{it.name}</div>
                             </Flex.Item>
                           )
@@ -75,7 +62,6 @@ const AirportGJ = ({
           </section>
         </Flex.Item>
       </Flex>
-      
     </section>
   )
 };

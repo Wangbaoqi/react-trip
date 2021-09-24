@@ -1,25 +1,11 @@
-import React, { Fragment, useState, useEffect, Suspense } from "react";
-
+import { useState, useEffect } from "react";
+import { SearchPane, HomeNav, HomeCard, AdBanner } from '@/components'
+import { getCardList } from '@/api/home'
+import { homeBanner } from '@/assets/imgConf'
 import "./HomeView.scss";
 
-import SearchPane from "@/components/searchPane/SearchPane";
-
-import HomeNav from "@/components/homeNav/HomeNav";
-
-import HomeCard from "@/components/homeCard/HomeCard";
-
-import AdBanner from "@/components/adBanner/AdBanner";
-
-import { getCardList } from '@/api/home'
-
-import { homeBanner } from '@/assets/imgConf'
-
-
-import { Button } from "react-vant";
 const Home = () => {
-
   const [cardList, setCardList] = useState([]);
-  
   useEffect(() => {
     getCardList({}).then(res => {
       console.log(res);
@@ -27,7 +13,6 @@ const Home = () => {
     })
   }, [])
   
-
   return (
     <div className="home">
       {/* search */}
@@ -38,7 +23,6 @@ const Home = () => {
       <HomeCard cardList={cardList}/>
       {/* home banner */}
       <AdBanner url={homeBanner}/>
-
     </div>
   );
 };

@@ -1,30 +1,11 @@
-//
-import { useState, useEffect } from "react";
 import { Flex } from "react-vant";
-import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import classNames from "classnames";
-
 
 const AirPortGn = ({ 
   airportCity,
   onCheck
 }) => {
   const { hl = [], pl = [] } = airportCity;
-
-  useEffect(() => {
-    Events.scrollEvent.register('begin', function () {
-      console.log("begin", arguments);
-    });
-
-    Events.scrollEvent.register('end', function () {
-      console.log("end", arguments);
-    });
-    return () => {
-      Events.scrollEvent.remove('begin');
-      Events.scrollEvent.remove('end');
-    };
-  }, []);
-
 
   return (
     <section className="airport-city-container">
@@ -51,7 +32,7 @@ const AirPortGn = ({
           {pl.map((im, idx) => {
             return (
               <Flex.Item span={3} className="airport-city__content font-13" key={idx} >
-                <Link className="airport-city__item font-14" to='C' spy={true} smooth={true} duration={500}>{im.p}</Link>
+                <div className="airport-city__item font-14">{im.p}</div>
               </Flex.Item>
             );
           })}
@@ -78,7 +59,6 @@ const AirPortGn = ({
             </div>
           );
         })}
-        <p></p>
       </div>
     </section>
   );

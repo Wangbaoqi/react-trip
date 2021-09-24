@@ -3,7 +3,6 @@
 
 import './FlyHeader.scss';
 import logo from "@/assets/logo1.png";
-
 import classNames from 'classnames';
 
 const FlyHeader = ({
@@ -12,10 +11,10 @@ const FlyHeader = ({
   handleToggle
 }) => {
 
-  const activeVal = data.filter(e => e.type == toggleType)[0].value;
+  const activeVal = data.filter(e => e.type === toggleType)[0].value;
   const activeCls = classNames({
     'fly-header__toggle-item--active': true,
-    'fly-header__toggle-item--trans': toggleType == 1,
+    'fly-header__toggle-item--trans': toggleType === 1,
   })
 
 

@@ -7,14 +7,13 @@ import {
   FlyCardSearch, 
   FlyCardTips 
 } from './index';
-import { cacheSet } from '@/utils/cache';
+// import { cacheSet } from '@/utils/cache';
 import { updateCityInfo, updateDateInfo,updateCabinInfo, getFlyState } from '@/views/airport/flyIndex/flyIndexSlice'
 import { AirPortCity, CalenderPrice, CabinSelect } from '@/components';
 import { Divider } from 'react-vant';
 import './FlyCard.scss';
 
-const FlyCard = ({
-}) => {
+const FlyCard = () => {
   const cabinList = ['经济舱', '公务舱/头等舱']
   const flyState = useSelector(getFlyState);
   const dispatch = useDispatch();
@@ -29,7 +28,7 @@ const FlyCard = ({
   const [dateType, setDateType] = useState(0);
 
   useEffect(() => {
-    cacheSet('fly-index_exchange', isExchange);
+    // cacheSet('fly-index_exchange', isExchange);
   }, [])
 
   const handleExChange = () => {
@@ -108,7 +107,6 @@ const FlyCard = ({
         aDate={aDate}
         onConfirm={handelConfirmDate} 
         onClose={() => setCalenderShow(false)} 
-        onChangeDate={type => setDateType(type)}
       />
       {/* pop cabin */}
       <CabinSelect 

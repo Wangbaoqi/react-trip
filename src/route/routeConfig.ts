@@ -1,5 +1,5 @@
 
-import React, { lazy } from 'react'
+import { lazy } from 'react'
 
 import flightRoute from './flightRoute';
 import testRoute from './testRoute';

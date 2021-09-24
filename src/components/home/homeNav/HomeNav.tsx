@@ -1,11 +1,8 @@
 import { Link } from 'react-router-dom'
-
 import classNames from 'classnames';
-import './HomeNav.scss';
-
 import { Swipe } from 'react-vant';
-
 import { cardConf, cardSubConf } from './index';
+import './HomeNav.scss';
 
 
 interface CardItem {
@@ -19,8 +16,8 @@ interface CardItemProps {
   item: CardItem,
   row?: string
 }
-const NavCardItem = ({item, row}:CardItemProps) => {
 
+const NavCardItem = ({item, row}:CardItemProps) => {
   const classNameItem = classNames({
     'navCard__item': true,
     'navCardRow__item': row,
@@ -44,7 +41,6 @@ const NavCardItem = ({item, row}:CardItemProps) => {
 }
 
 const NavCard = ({cardConf, row}) => {
-
   const cardCls = classNames({
     'navCard': true,
     'navCardRow': row
@@ -53,7 +49,6 @@ const NavCard = ({cardConf, row}) => {
     'navCard__col': true,
     'navCardRow__row': row
   })
-
   return (
     <section className={cardCls}>
       {
@@ -71,9 +66,7 @@ const NavCard = ({cardConf, row}) => {
   )
 }
 
-
 const HomeNav = () => {
-
   return (
     <section className='homeNav'>
       <Swipe 
@@ -81,7 +74,7 @@ const HomeNav = () => {
         autoHeight={true}
         spaceBetween={20}
         pagination={{
-          renderBullet: (index, className) => {
+          renderBullet: (className) => {
             return `<span class="homeNav__swipe--bullet ${className}"></span>`;
           },
         }}

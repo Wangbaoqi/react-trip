@@ -1,11 +1,7 @@
 
 
 
-const FlyCardTips = ({
- 
-}) => {
-
-
+const FlyCardTips = () => {
   return (
     <section className='fly-card__tips mt-10'>
       <ul className='fly-card__tips-box font-13'>

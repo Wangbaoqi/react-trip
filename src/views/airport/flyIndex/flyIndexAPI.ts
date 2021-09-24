@@ -1,4 +1,3 @@
-import request from '@/utils/request';
 import { cacheGet, cacheSet } from '@/utils/cache';
 import { 
   getAirportListLandAPI, 
@@ -7,11 +6,6 @@ import {
   getInterAirportListOtherAPI,
   getCalenderHolidayAPI
 } from '@/api/flyIndex';
-
-const baseUrl = process.env.REACT_APP_BASE_URL
-
-
-
 
 export const getAirportList = () => {
 
@@ -53,8 +47,6 @@ export const getAirportList = () => {
       console.log(err, 'getAirport fail');
     })
   }
-
-  
 }
 
 export const getCalenderHoliday = () => {
